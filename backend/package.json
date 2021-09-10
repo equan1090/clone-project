@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "dotenv-cli": "^4.0.0",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "redux-logger": "^3.0.6"
   }
 }
