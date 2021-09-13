@@ -2,9 +2,11 @@
 module.exports = (sequelize, DataTypes) => {
   const Album = sequelize.define('Album', {
     title: {
+      allowNull: false,
       type: DataTypes.STRING
     },
     imageUrl: {
+      allowNull: false,
       type: DataTypes.STRING
     },
     userId: {

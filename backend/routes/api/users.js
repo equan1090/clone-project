@@ -20,7 +20,8 @@ router.post(
       });
     }),
   );
-  router.get(
+  // Restore session user
+router.get(
     '/',
     restoreUser,
     (req, res) => {
