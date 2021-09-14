@@ -14,9 +14,24 @@ router.get('/', asyncHandler(async function (req, res) {
     res.json(albums)
 }))
 
+router.get('/:albumId', asyncHandler(async(req, res) => {
+    const id = req.params
+    const album = await Album.findByPk(id.albumId)
+    res.json(album)
+
+}))
+
 router.post('/', asyncHandler(async(req,res) => {
     const album = await Album.create(req.body);
     res.json(album)
+}))
+
+router.delete('/:albumId', asyncHandler(async(req, res) => {
+    const id = req.params
+    const album = await Album.findByPk(id.albumId)
+    await album.destroy()
+    res.json(album)
+
 }))
 
 
