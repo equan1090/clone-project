@@ -14,6 +14,7 @@ router.get('/', asyncHandler(async function (_req, res) {
     res.json(albums)
 }))
 
+
 router.get('/:albumId', asyncHandler(async(req, res) => {
     const id = req.params
     const album = await Album.findByPk(id.albumId)

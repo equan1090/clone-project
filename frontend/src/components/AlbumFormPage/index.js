@@ -27,7 +27,9 @@ function AlbumFormPage() {
             imageUrl: image
         }
 
-        await dispatch(createAlbum(payload))
+        const album = await dispatch(createAlbum(payload))
+
+        history.push(`/users/${sessionUser.id}/albums`)
 
     }
     return (

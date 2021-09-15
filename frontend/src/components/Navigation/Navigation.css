@@ -1,0 +1,75 @@
+header {
+    grid-area: header;
+    width: 100vw;
+    font-weight: 100;
+    background-color: #333;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 46px;
+}
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+a, a:visited {
+    text-decoration: none;
+    color: #ccc;
+}
+
+.header__navMenuItem {
+    display: block;
+    padding: 12px 0;
+    height: 46px;
+    box-sizing: border-box;
+
+}
+
+.headerBtn li {
+    display: inline-block;
+    list-style-type: none;
+
+}
+
+.headerBtn {
+    display: inline-flex;
+    margin: 0;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    margin-right: 2rem;
+}
+
+.profile-dropdown {
+    position: absolute;
+    top: 46px;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    background-color: #999;
+    backdrop-filter: blur(0.2);
+    border: 1px solid #212121;
+    color: black;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    margin: 0;
+}
+
+.profile {
+    margin-right: 2rem;
+}
+
+#uploadBtn {
+    color: #f50;
+}

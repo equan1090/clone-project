@@ -29,8 +29,8 @@ function SongFormPage() {
             url
         }
 
-        await dispatch(createSong(payload))
-
+        const song = await dispatch(createSong(payload))
+        history.push(`/user/songs/${song.id}`)
     }
 
     if(!sessionUser) {

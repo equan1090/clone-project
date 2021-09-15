@@ -9,9 +9,10 @@ const ADD = 'ADD_SONG'
 const DELETE = 'DELETE_ALBUM'
 const LOAD = 'LOAD_ALBUM'
 
-const load = list => ({
+//Action Creators
+export const load = (albums) => ({
     type: LOAD,
-    list
+    albums
 })
 
 export const deleteAlbum = (album) => {
@@ -35,6 +36,8 @@ export const addNewAlbum = (newAlbum) => {
 //     }
 // }
 
+
+//Thunks
 export const getAlbum = () => async(dispatch) => {
     const response = await csrfFetch('/api/album');
 
@@ -62,6 +65,14 @@ export const getSpecificAlbum = () => async(dispatch) => {
     }
 }
 
+export const getUserAlbums = (id) => async(dispatch) => {
+    const response = await csrfFetch(`/api/users/${id}/albums`)
+
+    if(response.ok) {
+        const albums = await response.json();
+        dispatch(load(albums))
+    }
+}
 
 // export const newSong = (songData) => async(dispatch) => {
 //     const response = await csrfFetch(`/api/album/`, {
@@ -91,19 +102,26 @@ export const createAlbum = (albumData) => async (dispatch) => {
     }
 }
 
+const initialState = {albums:null}
 
-const albumReducer = (state, action) => {
+const albumReducer = (state = initialState, action) => {
+
+    let newState;
+    
     switch(action.type) {
+
         case CREATE:
             return {
                 ...state,
                 [action.payload.id] : action.payload
             }
+
         case LOAD:
-            return {
-                ...state,
-                [action.payload.list]: action.payload
-            }
+
+            newState = {...state}
+            newState.albums = action.albums
+            return newState;
+
         case DELETE:
             return {
                 ...state,
@@ -111,7 +129,7 @@ const albumReducer = (state, action) => {
             }
 
         default:
-            console.log('hello')
+            return state;
     }
 }
 
