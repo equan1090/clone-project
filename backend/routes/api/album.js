@@ -9,7 +9,7 @@ const {Album} = require("../../db/models")
 const router = express.Router();
 
 //Can find all by user, will change in the future!!
-router.get('/', asyncHandler(async function (req, res) {
+router.get('/', asyncHandler(async function (_req, res) {
     const albums = await Album.findAll()
     res.json(albums)
 }))
