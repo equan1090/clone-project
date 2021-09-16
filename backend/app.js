@@ -27,15 +27,24 @@ app.use(helmet({
 }))
 
 // Set the _csrf token and create req.csrfToken method
-app.use(
-    csurf({
-        cookie: {
-            secure: isProduction,
-            sameSite: isProduction && "Lax",
-            httpOnly: true,
-        },
-    })
-);
+/*
+
+REMEMBER TO PUT THIS BACK IN FOR PRODUCTION!!!!!!!
+REMEMBER TO PUT THIS BACK IN FOR PRODUCTION!!!!!!!
+REMEMBER TO PUT THIS BACK IN FOR PRODUCTION!!!!!!!
+REMEMBER TO PUT THIS BACK IN FOR PRODUCTION!!!!!!!
+REMEMBER TO PUT THIS BACK IN FOR PRODUCTION!!!!!!!
+REMEMBER TO PUT THIS BACK IN FOR PRODUCTION!!!!!!!
+*/
+// app.use(
+//     csurf({
+//         cookie: {
+//             secure: isProduction,
+//             sameSite: isProduction && "Lax",
+//             httpOnly: true,
+//         },
+//     })
+// );
 app.use(routes);
 // Catch unhandled requests and forward to error handler.
 app.use((_req, _res, next) => {

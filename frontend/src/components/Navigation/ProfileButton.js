@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import UserPage from "../UserPage";
+import { Link } from "react-router-dom";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -30,12 +32,13 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+      <button onClick={openMenu} className='profile'>
+        {/* <i className="fas fa-user-circle" /> */}
+        {user.username}
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
-          <li>{user.username}</li>
+          <li><Link to={`/users/${user.id}`}>My Profile</Link></li>
           <li>{user.email}</li>
           <li>
             <button onClick={logout}>Log Out</button>
