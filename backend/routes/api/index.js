@@ -7,6 +7,6 @@ router.use('/session', sessionRouter);
 
 router.use('/songs', songRouter)
 router.use('/users', usersRouter);
-router.use('/album', albumRouter)
+router.use('/albums', albumRouter)
 
 module.exports = router;

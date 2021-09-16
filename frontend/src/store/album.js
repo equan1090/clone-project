@@ -89,7 +89,7 @@ export const getUserAlbums = (id) => async(dispatch) => {
 // }
 
 export const createAlbum = (albumData) => async (dispatch) => {
-    const response = await csrfFetch('/api/album', {
+    const response = await csrfFetch('/api/albums/new', {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(albumData)
@@ -107,7 +107,7 @@ const initialState = {albums:null}
 const albumReducer = (state = initialState, action) => {
 
     let newState;
-    
+
     switch(action.type) {
 
         case CREATE:

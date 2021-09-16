@@ -14,9 +14,9 @@ const add = (newSong) => {
     }
 }
 
-const load = (list) => ({
+const load = (songs) => ({
     type: LOAD,
-    list
+    songs
 })
 
 const remove = (song) => {
@@ -30,9 +30,18 @@ const remove = (song) => {
 export const getSongs = () => async(dispatch) => {
     const response = await csrfFetch('/api/songs');
     if(response.ok) {
-        const list = await response.json();
-        dispatch(load(list))
+        const songs = await response.json();
+        dispatch(load(songs))
     }
+}
+export const getAlbumSongs = (albumId) => async(dispatch) => {
+    const response = await csrfFetch(`/api/albums/${albumId}/songs`)
+
+    if(response.ok) {
+        const songs = await response.json();
+        dispatch(load(songs))
+    }
+
 }
 
 export const createSong = (songData) => async (dispatch) => {
@@ -50,6 +59,7 @@ export const createSong = (songData) => async (dispatch) => {
 }
 
 export const deleteSong = () => async(dispatch) => {
+
     const response = await csrfFetch('/api/songs/:songId')
 
 
@@ -60,8 +70,21 @@ export const deleteSong = () => async(dispatch) => {
 
 }
 
+export const getUserSongs = (id) => async(dispatch) => {
+    const response = await csrfFetch(`/api/users/${id}/songs`)
+
+    if(response.ok) {
+        const songs = await response.json()
+        dispatch(load(songs))
+    }
+}
+
 
 const songReducer = (state, action) => {
+
+
+    let newState;
+
     switch(action.type) {
         case ADD:
             return {
@@ -69,10 +92,11 @@ const songReducer = (state, action) => {
                 [action.payload.id]: action.payload
             }
         case LOAD:
-            return {
-                ...state,
-                [action.payload.list]: action.payload
-            }
+
+            newState = {...state}
+            newState.songs = action.songs
+            return newState
+
         case DELETE:
             return {
                 ...state,
@@ -80,7 +104,9 @@ const songReducer = (state, action) => {
             }
 
         default:
-            console.log('You done messed up if you reached here')
+            return {
+                state
+            }
     }
 }
 

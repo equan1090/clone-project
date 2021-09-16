@@ -9,6 +9,8 @@ import Navigation from "./components/Navigation";
 import UserPage from "./components/UserPage";
 import SongFormPage from './components/SongFormPage'
 import AlbumPage from "./components/AlbumPage";
+import SpecificAlbum from "./components/SpecificAlbumPage";
+import UserSongs from './components/UserSongs'
 
 function App() {
   const dispatch = useDispatch();
@@ -34,11 +36,17 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route path="/albums/:albumId/songs">
+            <SpecificAlbum />
+          </Route>
           <Route path="/albums/new">
             <AlbumFormPage />
           </Route>
           <Route path="/songs/new">
             <SongFormPage />
+          </Route>
+          <Route path='/users/:userId/songs'>
+            <UserSongs />
           </Route>
           <Route path='/'>Page not found</Route>
         </Switch>

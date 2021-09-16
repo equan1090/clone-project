@@ -2,7 +2,8 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { check, validationResult } = require('express-validator');
 
-const {Album} = require("../../db/models")
+const {Album, Song} = require("../../db/models")
+
 
 
 
@@ -22,7 +23,17 @@ router.get('/:albumId', asyncHandler(async(req, res) => {
 
 }))
 
-router.post('/', asyncHandler(async(req,res) => {
+router.get('/:albumId/songs', asyncHandler(async(req, res) => {
+    const id = req.params
+    const songs = await Song.findAll({
+        where: {
+            albumId: id.albumId
+        }
+    })
+    res.json(songs)
+}))
+
+router.post('/new', asyncHandler(async(req,res) => {
     const album = await Album.create(req.body);
     res.json(album)
 }))
