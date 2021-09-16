@@ -27,7 +27,7 @@ function App() {
           <Route path="/users/:userId/albums">
             <AlbumPage />
           </Route>
-          <Route path="/users/:userId">
+          <Route exact path="/users/:userId">
             <UserPage />
           </Route>
           <Route path="/login">

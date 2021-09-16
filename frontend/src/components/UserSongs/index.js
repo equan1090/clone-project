@@ -9,9 +9,9 @@ function UserSongs() {
     const songs = useSelector(state => state.songs.songs)
 
     useEffect(() => {
-        console.log('*****************POOP****************')
+        console.log('*********************************')
         dispatch(getUserSongs(params.userId))
-    }, [dispatch])
+    }, [dispatch, params])
 
 
     return (
