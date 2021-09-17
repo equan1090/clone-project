@@ -13,44 +13,47 @@ function SpecificAlbum() {
     const params = useParams();
     const songs = useSelector(state => state.songs.songs)
     const sessionUser = useSelector(state => state.session.user);
-    // const albums = useSelector(state => state.albums.albums)
+    const album = useSelector(state => state.albums.albums)
     // const [albumId, setAlbumId] = useState(params.albumId)
-
+    console.log('***************' ,album)
     useEffect(() => {
         dispatch(getAlbumSongs(params.albumId))
+        dispatch(getSpecificAlbum(params.albumId))
     }, [dispatch])
-
 
 
 
     const deleteAlbum = async () => {
 
-        // dispatch(getSpecificAlbum(params.albumId))
         await dispatch(removeAlbum(params.albumId))
         history.push(`/users/${sessionUser.id}/albums`)
 
     }
-
-    return(
-        <div>
-            <h1></h1>
-            <ul>
-                {songs?.map((song) => (
-                    <div className='album-song-container'>
-                        <img src="" alt="" />
-                        <li key={song.id}>{song.name}</li>
-                    </div>
-                ))}
-             </ul>
+    if(album){
+        return(
             <div>
-                <Link to={`/albums/${params.albumId}/edit`}>Edit</Link>
+                <h1>{album.title}</h1>
+                <ul>
+                    {songs?.map((song) => (
+                        <div className='album-song-container' key={song.id}>
+                            <img src={album.imageUrl} alt="Album Picture" />
+                            <li>{song.name}</li>
+                        </div>
+                    ))}
+                 </ul>
+                <div>
+                    <Link to={`/albums/${params.albumId}/edit`}>Edit</Link>
 
-                <button onClick={deleteAlbum}>
-                    Delete Album
-                </button>
+                    <button onClick={deleteAlbum}>
+                        Delete Album
+                    </button>
+                </div>
+
             </div>
-        </div>
-    )
+        )
+    } else{
+        return null;
+    }
 
 
 }

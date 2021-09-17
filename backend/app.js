@@ -28,15 +28,7 @@ app.use(helmet({
 }))
 
 // Set the _csrf token and create req.csrfToken method
-/*
 
-REMEMBER TO PUT THIS BACK IN FOR PRODUCTION!!!!!!!
-REMEMBER TO PUT THIS BACK IN FOR PRODUCTION!!!!!!!
-REMEMBER TO PUT THIS BACK IN FOR PRODUCTION!!!!!!!
-REMEMBER TO PUT THIS BACK IN FOR PRODUCTION!!!!!!!
-REMEMBER TO PUT THIS BACK IN FOR PRODUCTION!!!!!!!
-REMEMBER TO PUT THIS BACK IN FOR PRODUCTION!!!!!!!
-*/
 app.use(
     csurf({
         cookie: {
