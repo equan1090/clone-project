@@ -37,15 +37,15 @@ REMEMBER TO PUT THIS BACK IN FOR PRODUCTION!!!!!!!
 REMEMBER TO PUT THIS BACK IN FOR PRODUCTION!!!!!!!
 REMEMBER TO PUT THIS BACK IN FOR PRODUCTION!!!!!!!
 */
-// app.use(
-//     csurf({
-//         cookie: {
-//             secure: isProduction,
-//             sameSite: isProduction && "Lax",
-//             httpOnly: true,
-//         },
-//     })
-// );
+app.use(
+    csurf({
+        cookie: {
+            secure: isProduction,
+            sameSite: isProduction && "Lax",
+            httpOnly: true,
+        },
+    })
+);
 app.use(routes);
 // Catch unhandled requests and forward to error handler.
 app.use((_req, _res, next) => {
