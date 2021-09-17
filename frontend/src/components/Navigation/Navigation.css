@@ -19,7 +19,7 @@ body {
 
 a, a:visited {
     text-decoration: none;
-    color: #ccc;
+    color: black;
 }
 
 .header__navMenuItem {
@@ -46,6 +46,7 @@ a, a:visited {
     gap: 1rem;
     list-style: none;
     margin-right: 2rem;
+    color: #ccc;
 }
 
 .profile-dropdown {

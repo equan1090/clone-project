@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Album } = require('../../db/models');
+const { User, Album, Song } = require('../../db/models');
 
 const router = express.Router();
 
@@ -43,6 +43,17 @@ router.get('/:userId/albums', async(req, res) => {
     }
   })
   res.json(albums)
+})
+
+router.get('/:userId/songs', async(req, res) => {
+  const id = req.params
+  const songs = await Song.findAll({
+    where: {
+      userId: id.userId,
+      albumId: null
+    }
+  })
+  res.json(songs)
 })
 
 module.exports = router;

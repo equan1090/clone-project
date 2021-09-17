@@ -1,39 +1,35 @@
 import React, { useState } from 'react';
 // import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { createAlbum } from '../../store/album';
+import { useHistory, useParams, Link } from 'react-router-dom';
+import { updateAlbum } from '../../store/album';
 
-function AlbumFormPage() {
-    //dispatch any action to the store
+
+
+function EditFormPage(){
+
     const dispatch = useDispatch();
     const [title, setTitle] = useState('')
-    const [image, setImage] = useState('')
+    const [imageUrl, setImageUrl] = useState('')
     const history = useHistory();
-
-    //takes the current state as an argument and returns whatever data you want from it
-    const sessionUser = useSelector(state => state.session.user);
-
-    if(!sessionUser) {
-        history.push('/login')
-    }
+    const params = useParams();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         const payload = {
-            userId: sessionUser.id,
             title,
-            imageUrl: image
+            imageUrl
         }
 
-        await dispatch(createAlbum(payload))
 
-        history.push(`/users/${sessionUser.id}/albums`)
+        await dispatch(updateAlbum( payload, params.albumId))
+        history.push(`/albums/${params.albumId}/songs`)
 
     }
+
     return (
-        <form onSubmit={handleSubmit}>
+        <form
+            onSubmit={handleSubmit}>
             <input type="text"
                 placeholder="Title"
                 value={title}
@@ -42,8 +38,8 @@ function AlbumFormPage() {
             />
             <input type="text"
                 placeholder='Image Url'
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
+                value={imageUrl}
+                onChange={(e) => setImageUrl(e.target.value)}
                 required
             />
             <button type='submit'>Submit</button>
@@ -51,5 +47,4 @@ function AlbumFormPage() {
     )
 }
 
-
-export default AlbumFormPage;
+export default EditFormPage;

@@ -14,7 +14,7 @@ function UserPage() {
             <ul className='profile-page-tabs'>
                 <li>
                     <Link to={`/users/${id.userId}/albums`}>Albums</Link>
-                    <Link to='#'>Tracks</Link>
+                    <Link to={`/users/${id.userId}/songs`}>Tracks</Link>
                 </li>
 
             </ul>

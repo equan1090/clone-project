@@ -9,6 +9,10 @@ import Navigation from "./components/Navigation";
 import UserPage from "./components/UserPage";
 import SongFormPage from './components/SongFormPage'
 import AlbumPage from "./components/AlbumPage";
+import SpecificAlbum from "./components/SpecificAlbumPage";
+import UserSongs from './components/UserSongs'
+import AudioBar from "./components/AudioBar";
+import EditFormPage from "./components/EditFormPage/EditFormPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,12 +24,13 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+
       {isLoaded && (
         <Switch>
           <Route path="/users/:userId/albums">
             <AlbumPage />
           </Route>
-          <Route path="/users/:userId">
+          <Route exact path="/users/:userId">
             <UserPage />
           </Route>
           <Route path="/login">
@@ -34,15 +39,25 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
+          <Route path='/albums/:albumId/edit'>
+            <EditFormPage />
+          </Route>
+          <Route path="/albums/:albumId/songs">
+            <SpecificAlbum />
+          </Route>
           <Route path="/albums/new">
             <AlbumFormPage />
           </Route>
           <Route path="/songs/new">
             <SongFormPage />
           </Route>
+          <Route path='/users/:userId/songs'>
+            <UserSongs />
+          </Route>
           <Route path='/'>Page not found</Route>
         </Switch>
       )}
+      <AudioBar />
     </>
   );
 }
