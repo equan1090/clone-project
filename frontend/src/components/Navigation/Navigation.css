@@ -46,6 +46,7 @@ a, a:visited {
     gap: 1rem;
     list-style: none;
     margin-right: 2rem;
+    color: #ccc;
 }
 
 .profile-dropdown {

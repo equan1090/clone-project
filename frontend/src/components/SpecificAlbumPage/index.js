@@ -28,8 +28,6 @@ function SpecificAlbum() {
 
     }
 
-
-
     return(
         <div>
             <p>This is in SpecificAlbumPage component</p>
@@ -39,6 +37,7 @@ function SpecificAlbum() {
                 ))}
              </ul>
             <div>
+
                 <button onClick={deleteAlbum}>
                     Delete Album
                 </button>

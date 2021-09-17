@@ -11,6 +11,7 @@ import SongFormPage from './components/SongFormPage'
 import AlbumPage from "./components/AlbumPage";
 import SpecificAlbum from "./components/SpecificAlbumPage";
 import UserSongs from './components/UserSongs'
+import AudioBar from "./components/AudioBar";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+
       {isLoaded && (
         <Switch>
           <Route path="/users/:userId/albums">
@@ -51,6 +53,7 @@ function App() {
           <Route path='/'>Page not found</Route>
         </Switch>
       )}
+      <AudioBar />
     </>
   );
 }

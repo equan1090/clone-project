@@ -48,7 +48,7 @@ export const getAlbum = () => async(dispatch) => {
 };
 
 export const removeAlbum = (id) => async(dispatch) => {
-    const response = await csrfFetch(`/api/album/${id}/songs`, {
+    const response = await csrfFetch(`/api/albums/${id}/songs`, {
         method: 'DELETE',
         body: JSON.stringify({id})
     })
