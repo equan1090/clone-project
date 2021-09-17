@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import { getAlbumSongs } from "../../store/song";
-import { getSpecificAlbum, removeAlbum } from "../../store/album";
+import { getSpecificAlbum, removeAlbum, getUserAlbums, updateAlbum } from "../../store/album";
 
 
 
@@ -13,16 +13,19 @@ function SpecificAlbum() {
     const params = useParams();
     const songs = useSelector(state => state.songs.songs)
     const sessionUser = useSelector(state => state.session.user);
-    const album = useSelector(state => state.albums.albums)
+    // const albums = useSelector(state => state.albums.albums)
+    // const [albumId, setAlbumId] = useState(params.albumId)
 
     useEffect(() => {
         dispatch(getAlbumSongs(params.albumId))
-        // dispatch(getSpecificAlbum(params.albumId))
     }, [dispatch])
+
+
 
 
     const deleteAlbum = async () => {
 
+        // dispatch(getSpecificAlbum(params.albumId))
         await dispatch(removeAlbum(params.albumId))
         history.push(`/users/${sessionUser.id}/albums`)
 
@@ -30,13 +33,17 @@ function SpecificAlbum() {
 
     return(
         <div>
-            <p>This is in SpecificAlbumPage component</p>
+            <h1></h1>
             <ul>
                 {songs?.map((song) => (
-                    <li key={song.id}>{song.name}</li>
+                    <div className='album-song-container'>
+                        <img src="" alt="" />
+                        <li key={song.id}>{song.name}</li>
+                    </div>
                 ))}
              </ul>
             <div>
+                <Link to={`/albums/${params.albumId}/edit`}>Edit</Link>
 
                 <button onClick={deleteAlbum}>
                     Delete Album

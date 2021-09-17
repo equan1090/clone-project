@@ -8,6 +8,7 @@ const CREATE = 'CREATE_ALBUM'
 const ADD = 'ADD_SONG'
 const DELETE = 'DELETE_ALBUM'
 const LOAD = 'LOAD_ALBUM'
+const UPDATE = 'UPDATE_ALBUM'
 
 //Action Creators
 export const load = (albums) => ({
@@ -28,6 +29,12 @@ export const addNewAlbum = (newAlbum) => {
         payload: newAlbum
     }
 }
+export const update = (album) => {
+    return {
+        type: UPDATE,
+        payload: album
+    }
+}
 
 // export const addSong = (newSong) => {
 //     return {
@@ -39,7 +46,7 @@ export const addNewAlbum = (newAlbum) => {
 
 //Thunks
 export const getAlbum = () => async(dispatch) => {
-    const response = await csrfFetch('/api/album');
+    const response = await csrfFetch('/api/albums');
 
     if(response.ok){
      const albums = await response.json();
@@ -60,7 +67,7 @@ export const removeAlbum = (id) => async(dispatch) => {
 }
 
 export const getSpecificAlbum = (id) => async(dispatch) => {
-    const response = await csrfFetch(`/api/album/${id}`)
+    const response = await csrfFetch(`/api/albums/${id}`)
 
     if(response.ok) {
         const album = await response.json();
@@ -74,6 +81,20 @@ export const getUserAlbums = (id) => async(dispatch) => {
     if(response.ok) {
         const albums = await response.json();
         dispatch(load(albums))
+    }
+}
+
+export const updateAlbum = (album, id) => async(dispatch) => {
+
+    const response = await csrfFetch(`/api/albums/${id}`,{
+        method: "PUT",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(album)
+    })
+
+    if(response.ok){
+        const updatedAlbum = await response.json();
+        dispatch(update(updatedAlbum))
     }
 }
 
@@ -130,6 +151,11 @@ const albumReducer = (state = initialState, action) => {
                 ...state,
                 [action.payload.album]: action.payload
             }
+        case UPDATE:
+                return {
+                    ...state,
+                    [action.payload.id]: action.payload
+                }
 
         default:
             return state;

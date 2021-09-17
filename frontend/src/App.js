@@ -12,6 +12,7 @@ import AlbumPage from "./components/AlbumPage";
 import SpecificAlbum from "./components/SpecificAlbumPage";
 import UserSongs from './components/UserSongs'
 import AudioBar from "./components/AudioBar";
+import EditFormPage from "./components/EditFormPage/EditFormPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path='/albums/:albumId/edit'>
+            <EditFormPage />
           </Route>
           <Route path="/albums/:albumId/songs">
             <SpecificAlbum />
