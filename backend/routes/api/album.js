@@ -38,12 +38,12 @@ router.post('/new', asyncHandler(async(req,res) => {
     res.json(album)
 }))
 
-router.delete('/:albumId', asyncHandler(async(req, res) => {
+router.delete('/:albumId/songs', asyncHandler(async(req, res) => {
     const id = req.params
     const album = await Album.findByPk(id.albumId)
+    
     await album.destroy()
-    res.json(album)
-
+    return res.json(album)
 }))
 
 

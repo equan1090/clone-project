@@ -19,7 +19,7 @@ body {
 
 a, a:visited {
     text-decoration: none;
-    color: #ccc;
+    color: black;
 }
 
 .header__navMenuItem {

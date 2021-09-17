@@ -79,9 +79,8 @@ export const getUserSongs = (id) => async(dispatch) => {
     }
 }
 
-
-
-const songReducer = (state, action) => {
+const initialState= {songs:null}
+const songReducer = (state = initialState, action) => {
 
 
     let newState;

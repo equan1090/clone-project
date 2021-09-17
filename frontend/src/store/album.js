@@ -42,26 +42,29 @@ export const getAlbum = () => async(dispatch) => {
     const response = await csrfFetch('/api/album');
 
     if(response.ok){
-     const list = await response.json();
-     dispatch(load(list))
+     const albums = await response.json();
+     dispatch(load(albums))
     }
 };
 
-export const removeAlbum = () => async(dispatch) => {
-    const response = await csrfFetch('/api/album/:albumId')
+export const removeAlbum = (id) => async(dispatch) => {
+    const response = await csrfFetch(`/api/album/${id}/songs`, {
+        method: 'DELETE',
+        body: JSON.stringify({id})
+    })
 
     if(response.ok) {
         const item = await response.json();
-        dispatch(deleteAlbum(item))
+        await dispatch(deleteAlbum(item))
     }
 }
 
-export const getSpecificAlbum = () => async(dispatch) => {
-    const response = await csrfFetch('/api/album/:albumId')
+export const getSpecificAlbum = (id) => async(dispatch) => {
+    const response = await csrfFetch(`/api/album/${id}`)
 
     if(response.ok) {
-        const list = await response.json();
-        dispatch(load(list))
+        const album = await response.json();
+        dispatch(load(album))
     }
 }
 
