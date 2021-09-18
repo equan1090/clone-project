@@ -4,15 +4,17 @@ import { getSpecificSong } from "../../store/song";
 import { useParams } from "react-router-dom";
 import './SongPage.css'
 import Fab from './Fab'
-
+import CommentForm from "../CommentForm";
+import DisplayComment from "../DisplayComment";
 function SongPage() {
 
     const song = useSelector(state => state.songs.songs)
     const params = useParams();
     const dispatch = useDispatch();
-    console.log('******************************',song)
+
     useEffect(() => {
         dispatch(getSpecificSong(params.songId))
+
     }, [dispatch])
 
     return (
@@ -21,6 +23,12 @@ function SongPage() {
                 <Fab />
             </div>
                 <p>{song && song.name}</p>
+            <div>
+                <CommentForm />
+            </div>
+            <div>
+                <DisplayComment />
+            </div>
         </div>
     )
 
