@@ -1,0 +1,19 @@
+.profile-header {
+    background-color: red;
+    height: 260px;
+    width: 100%;
+}
+
+.profile-page-tabs {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.edit-image {
+    width: 150px;
+    height: 150px;
+    background-color: blue;
+    border-radius: 50%;
+
+}
+

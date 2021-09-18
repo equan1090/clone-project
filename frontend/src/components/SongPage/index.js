@@ -2,6 +2,8 @@ import React, { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSpecificSong } from "../../store/song";
 import { useParams } from "react-router-dom";
+import './SongPage.css'
+import Fab from './Fab'
 
 function SongPage() {
 
@@ -12,9 +14,14 @@ function SongPage() {
     useEffect(() => {
         dispatch(getSpecificSong(params.songId))
     }, [dispatch])
-    
+
     return (
-        <p>{song && song.name}</p>
+        <div className='song-content-container'>
+            <div className='song-header'>
+                <Fab />
+            </div>
+                <p>{song && song.name}</p>
+        </div>
     )
 
 }
