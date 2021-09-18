@@ -10,14 +10,19 @@ function UserPage() {
     // const sessionUser = useSelector((state) => state.session.user);
 
     return(
-        <div className='profile-page-nav'>
-            <ul className='profile-page-tabs'>
-                <li>
-                    <Link to={`/users/${id.userId}/albums`}>Albums</Link>
-                    <Link to={`/users/${id.userId}/songs`}>Tracks</Link>
-                </li>
+        <div className="content-container">
+            <div className='profile-header'>
+                
+            </div>
+                <div className='profile-page-nav'>
+                    <ul className='profile-page-tabs'>
+                        <li>
+                            <Link to={`/users/${id.userId}/albums`}>Albums</Link>
+                            <Link to={`/users/${id.userId}/songs`}>Tracks</Link>
+                        </li>
 
-            </ul>
+                    </ul>
+                </div>
         </div>
     )
 }

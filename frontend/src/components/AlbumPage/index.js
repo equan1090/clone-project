@@ -13,6 +13,7 @@ function AlbumPage() {
         dispatch(getUserAlbums(params.userId))
 
     }, [dispatch])
+    console.log(albums)
 
     return(
         <div className='content-container'>

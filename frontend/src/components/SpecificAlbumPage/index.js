@@ -15,7 +15,7 @@ function SpecificAlbum() {
     const sessionUser = useSelector(state => state.session.user);
     const album = useSelector(state => state.albums.albums)
     // const [albumId, setAlbumId] = useState(params.albumId)
-    console.log('***************' ,album)
+
     useEffect(() => {
         dispatch(getAlbumSongs(params.albumId))
         dispatch(getSpecificAlbum(params.albumId))
@@ -34,10 +34,12 @@ function SpecificAlbum() {
             <div>
                 <h1>{album.title}</h1>
                 <ul>
-                    {songs?.map((song) => (
+                    {songs && songs?.map((song) => (
                         <div className='album-song-container' key={song.id}>
-                            <img src={album.imageUrl} alt="Album Picture" />
-                            <li>{song.name}</li>
+                            <Link to={`/songs/${song.id}`}>
+                                <img src={album.imageUrl} alt="Album Picture" />
+                                <li>{song.name}</li>
+                            </Link>
                         </div>
                     ))}
                  </ul>

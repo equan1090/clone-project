@@ -61,13 +61,20 @@ export const createSong = (songData) => async (dispatch) => {
 export const deleteSong = () => async(dispatch) => {
 
     const response = await csrfFetch('/api/songs/:songId')
-
-
     if(response.ok) {
         const song = await response.json();
         dispatch(remove(song))
     }
 
+}
+
+export const getSpecificSong = (id) => async(dispatch) => {
+    const response = await csrfFetch(`/api/songs/${id}`)
+
+    if(response.ok) {
+        const song = await response.json();
+        dispatch(load(song))
+    }
 }
 
 export const getUserSongs = (id) => async(dispatch) => {
