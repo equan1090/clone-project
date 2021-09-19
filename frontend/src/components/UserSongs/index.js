@@ -16,7 +16,7 @@ function UserSongs() {
 
     return (
         <div className='content-container'>
-            <h2>UserSongsPage</h2>
+
             <div className='profile-header'>
             <img src="https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/1631/posts/35798/image/SoundcloudBanner20.jpg"
                     alt="" className='profile-header'/>
@@ -36,7 +36,7 @@ function UserSongs() {
 
                 </ul>
             </div>
-            {songs?.map((song) => (
+            {Array.isArray(songs) && songs?.map((song) => (
                 <ul>
                     <li>
                         {song.name}

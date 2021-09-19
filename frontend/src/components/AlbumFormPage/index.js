@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-// import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createAlbum } from '../../store/album';
+import './AlbumFormPage.css'
 
 function AlbumFormPage() {
     //dispatch any action to the store
@@ -33,21 +33,27 @@ function AlbumFormPage() {
 
     }
     return (
-        <form onSubmit={handleSubmit}>
-            <input type="text"
-                placeholder="Title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                required
-            />
-            <input type="text"
-                placeholder='Image Url'
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
-                required
-            />
-            <button type='submit'>Submit</button>
-        </form>
+        <div className='form-container'>
+            <div className='album-form'>
+                <form onSubmit={handleSubmit}>
+                    <input type="text"
+                        className="album-title"
+                        placeholder="Title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        required
+                    />
+                    <input type="text"
+                        placeholder='Image Url'
+                        className="album-url"
+                        value={image}
+                        onChange={(e) => setImage(e.target.value)}
+                        required
+                    />
+                    <button type='submit'>Submit</button>
+                </form>
+            </div>
+        </div>
     )
 }
 

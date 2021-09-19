@@ -27,7 +27,7 @@ function CommentForm() {
     if(sessionUser){
         return (
             <form onSubmit={handleSubmit}>
-                <textarea name="newComment" id="" cols="30" rows="10"
+                <textarea name="newComment" id="" cols="30" rows="5"
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 placeholder="Comment here"

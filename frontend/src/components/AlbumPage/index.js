@@ -2,6 +2,8 @@ import React, { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserAlbums } from "../../store/album";
 import { useParams, Link } from "react-router-dom";
+
+
 import './AlbumPage.css'
 
 
@@ -11,10 +13,9 @@ function AlbumPage() {
     const params = useParams()
     const albums = useSelector(state => state.albums.albums);
 
+
     useEffect(() => {
-
         dispatch(getUserAlbums(params.userId))
-
     }, [dispatch])
 
 
@@ -40,12 +41,16 @@ function AlbumPage() {
             <div className='content'>
                 <ul className="user-albums">
                     {Array.isArray(albums) && albums?.map((album) => (
+                        <div>
                             <li className="each-album" key={album.id}>
                                 <Link to={`/albums/${album.id}/songs`} key={`${album.id}`}>
                                     <img src={`${album.imageUrl}`} alt="Image Location" />
-                                    {album.title}
                                 </Link>
                             </li>
+                            <li className='album-title'>
+                                {album.title}
+                            </li>
+                            </div>
                     ))}
                 </ul>
                 <div>

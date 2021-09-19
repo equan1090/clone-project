@@ -10,7 +10,7 @@ import App from './App';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 import configureStore from './store';
 import * as sessionActions from './store/session';
-
+import { SongProvider } from './context/SongUrl';
 
 const store = configureStore();
 
@@ -25,9 +25,11 @@ if (process.env.NODE_ENV !== 'production') {
 function Root() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <SongProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </SongProvider>
     </Provider>
   );
 }

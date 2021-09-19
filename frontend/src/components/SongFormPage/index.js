@@ -65,7 +65,7 @@ function SongFormPage() {
                 onChange={(e) => setAlbumId(e.target.value)}>
                 <option value="null" disabled selected>Add to Album</option>
                 <option value="null">None</option>
-                {albums && albums?.map((album) => (
+                {Array.isArray(albums) && albums?.map((album) => (
                     <option value={`${album.id}`} key={`${album.id}`}>{album.title}</option>
                 ))}
             </select>

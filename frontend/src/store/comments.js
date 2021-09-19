@@ -47,7 +47,11 @@ const commentReducer = (state = initialState, action) => {
     switch(action.type) {
         case CREATE:
             newState = {...state}
-            newState.comment = action.payload
+            console.log('THIS IS ACTION PAYLOAD',action.payload)
+            console.log('THIS IS NEW STATE', newState.comments)
+            newState.comments.push(action.payload)
+            // newState.comments.pop()
+            return newState
         case LOAD:
             newState = {...state}
             newState.comments = action.payload;

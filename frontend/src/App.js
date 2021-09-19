@@ -14,6 +14,7 @@ import UserSongs from './components/UserSongs'
 import AudioPlayer from "./components/AudioPlayer";
 import EditFormPage from "./components/EditFormPage/EditFormPage";
 import SongPage from "./components/SongPage"
+import HomePage from "./components/HomePage";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -27,6 +28,9 @@ function App() {
 
       {isLoaded && (
         <Switch>
+          <Route exact path='/'>
+            <HomePage />
+            </Route>
           <Route path="/users/:userId/albums">
             <AlbumPage />
           </Route>
@@ -44,7 +48,6 @@ function App() {
           </Route>
           <Route path="/albums/:albumId/songs">
             <SpecificAlbum />
-
           </Route>
           <Route path="/albums/new">
             <AlbumFormPage />

@@ -21,9 +21,12 @@ img {
 .user-albums {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 ul {
     list-style: none;
 }
-
+.album-title {
+    text-align: center;
+}

@@ -7,20 +7,21 @@ function DisplayComment () {
     const dispatch = useDispatch();
     const id = useParams();
     const comments = useSelector(state => state.comments.comments)
+    console.log('*****************',comments)
+
     // const user = useSelector(state => state.users.user)
-    const songs = useSelector(state => state.songs.songs);
-    console.log('********SONGS*********', songs)
+    // const songs = useSelector(state => state.songs.songs);
+
     useEffect(() => {
         dispatch(songComment(id.songId))
-        // dispatch(getUser(songs.userId))
     }, [dispatch])
 
     return(
         <div>
             {Array.isArray(comments) && comments.map((comment) => (
                 <div key={comment.id}>
-                    {comment.userId}
-                    {comment.content}
+                    {comment?.userId}
+                    {comment?.content}
                 </div>
             ))}
 
