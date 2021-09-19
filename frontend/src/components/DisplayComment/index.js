@@ -17,7 +17,7 @@ function DisplayComment () {
 
     return(
         <div>
-            {comments && comments.map((comment) => (
+            {Array.isArray(comments) && comments.map((comment) => (
                 <div key={comment.id}>
                     {comment.userId}
                     {comment.content}

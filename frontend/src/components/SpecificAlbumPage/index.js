@@ -34,7 +34,7 @@ function SpecificAlbum() {
             <div>
                 <h1>{album.title}</h1>
                 <ul>
-                    {songs && songs?.map((song) => (
+                    {Array.isArray(songs) && songs?.map((song) => (
                         <div className='album-song-container' key={song.id}>
                             <Link to={`/songs/${song.id}`}>
                                 <img src={album.imageUrl} alt="Album Picture" />
