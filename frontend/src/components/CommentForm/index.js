@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { createComment } from '../../store/comments';
-
+import './CommentForm.css'
 function CommentForm() {
     const dispatch = useDispatch();
     const [content, setContent] = useState('');
@@ -13,7 +13,7 @@ function CommentForm() {
     const id = useParams();
 
     const handleSubmit = async(e) => {
-        e.preventDefault();
+
 
         const payload = {
             userId: sessionUser.id,
@@ -26,20 +26,26 @@ function CommentForm() {
 
     if(sessionUser){
         return (
-            <form onSubmit={handleSubmit}>
-                <textarea name="newComment" id="" cols="30" rows="5"
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                placeholder="Comment here"
-                required
-                >
-                </textarea>
-                <button type='submit'>Submit</button>
-            </form>
+            <div id='comment-box'>
+
+                <form onSubmit={handleSubmit}>
+                    <textarea name="newComment" id="" cols="30" rows="5"
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
+                    placeholder="Comment here"
+                    required
+
+                    >
+                    </textarea>
+                    <button type='submit'>Submit</button>
+                </form>
+            </div>
         )
     } else{
         return(
-            <p>Login to comment</p>
+            <div id='comment-box'>
+                <Link to='/login'>Login </Link>
+            </div>
         )
     }
 }

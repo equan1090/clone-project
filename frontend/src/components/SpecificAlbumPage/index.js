@@ -31,8 +31,10 @@ function SpecificAlbum() {
 
     }
     if(album){
-        return(
-            <div className='song-container'>
+
+        if(sessionUser && sessionUser.id === album.userId){
+            return (
+                <div className='song-container'>
                 <div className='profile-header'>
                     <img src="https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/1631/posts/35798/image/SoundcloudBanner20.jpg"
                         alt="" className='profile-header'/>
@@ -49,6 +51,7 @@ function SpecificAlbum() {
                         </div>
                     ))}
                  </ul>
+
                 <div>
                     <Link to={`/albums/${params.albumId}/edit`}>Edit</Link>
 
@@ -58,7 +61,33 @@ function SpecificAlbum() {
                 </div>
 
             </div>
-        )
+            )
+        }else{
+            return(
+                <div className='song-container'>
+                    <div className='profile-header'>
+                        <img src="https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/1631/posts/35798/image/SoundcloudBanner20.jpg"
+                            alt="" className='profile-header'/>
+                        <h1 className='album-header-title'>{album.title}</h1>
+                    </div>
+
+                    <ul className='song-list'>
+                        {Array.isArray(songs) && songs?.map((song) => (
+                            <div className='album-song-container' key={song.id}>
+                                <Link to={`/songs/${song.id}`}>
+                                    <img src={album.imageUrl} alt="Album Picture" />
+                                    <li>{song.name}</li>
+                                </Link>
+                            </div>
+                        ))}
+                     </ul>
+
+                </div>
+            )
+        }
+
+
+
     } else{
         return null;
     }

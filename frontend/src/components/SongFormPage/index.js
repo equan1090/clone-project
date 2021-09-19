@@ -36,9 +36,6 @@ function SongFormPage() {
         history.push(`/user/songs/${song.id}`)
     }
 
-    if(!sessionUser) {
-        <Redirect to='/login' />
-    }
 
     const albums = useSelector(state => state.albums.albums)
 

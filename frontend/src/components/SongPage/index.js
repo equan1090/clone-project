@@ -22,10 +22,12 @@ function SongPage() {
 
     return (
         <div className='song-content-container'>
-            <button className='button play'onClick={() => {
-                setCurrentUrl(song?.url);
-            }} >{console.log(song?.url)}</button>
-                <p>{song && song?.name}</p>
+            <div className='song-content-header'>
+                <button className='button play'onClick={() => {
+                    setCurrentUrl(song?.url);
+                }} />
+                    <h2>{song && song?.name}</h2>
+            </div>
             <div>
                 <CommentForm />
             </div>
