@@ -39,8 +39,8 @@ function AlbumPage() {
             </div>
             <div className='content'>
                 <ul className="user-albums">
-                    {albums?.map((album) => (
-                            <li className="each-album">
+                    {albums && albums?.map((album) => (
+                            <li className="each-album" key={album.id}>
                                 <Link to={`/albums/${album.id}/songs`} key={`${album.id}`}>
                                     <img src={`${album.imageUrl}`} alt="Image Location" />
                                     {album.title}
