@@ -34,4 +34,14 @@
     background-color: #717BA2;
     width: 100%;
     height: 380px;
+    justify-content: space-between;
+}
+
+.song-header-image {
+    width: 380px;
+    height: 380px;
+}
+.comment-container{
+    text-align: center;
+    margin: 1rem
 }

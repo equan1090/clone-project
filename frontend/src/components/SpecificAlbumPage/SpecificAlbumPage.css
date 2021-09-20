@@ -11,3 +11,12 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
+
+.album-header-title {
+    text-align: center;
+}
+
+.crud-btn {
+    display: flex;
+    justify-content: space-evenly;
+}

@@ -7,9 +7,6 @@ function DisplayComment () {
     const dispatch = useDispatch();
     const id = useParams();
     const comments = useSelector(state => state.comments.comments)
-    const user = useSelector(state => state.users.user);
-
-
 
     useEffect(() => {
         dispatch(songComment(id.songId))
@@ -17,7 +14,7 @@ function DisplayComment () {
     }, [dispatch])
 
     return(
-        
+
 
         <div>
             {Array.isArray(comments) && comments.map((comment) => (

@@ -38,8 +38,8 @@ function SpecificAlbum() {
                 <div className='profile-header'>
                     <img src="https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/1631/posts/35798/image/SoundcloudBanner20.jpg"
                         alt="" className='profile-header'/>
-                    <h1 className='album-header-title'>{album.title}</h1>
                 </div>
+                    <h1 className='album-header-title'>{album.title}</h1>
 
                 <ul className='song-list'>
                     {Array.isArray(songs) && songs?.map((song) => (
@@ -52,7 +52,7 @@ function SpecificAlbum() {
                     ))}
                  </ul>
 
-                <div>
+                <div className='crud-btn'>
                     <Link to={`/albums/${params.albumId}/edit`}>Edit</Link>
 
                     <button onClick={deleteAlbum}>

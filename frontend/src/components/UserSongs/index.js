@@ -39,7 +39,7 @@ function UserSongs() {
             {Array.isArray(songs) && songs?.map((song) => (
                 <ul>
                     <li>
-                        {song.name}
+                        <Link to={`/songs/${song.id}`}>{song.name}</Link>
                     </li>
                 </ul>
             ))}

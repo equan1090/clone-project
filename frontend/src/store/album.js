@@ -36,13 +36,6 @@ export const update = (album) => {
     }
 }
 
-// export const addSong = (newSong) => {
-//     return {
-//         type: ADD,
-//         payload: newSong
-//     }
-// }
-
 
 //Thunks
 export const getAlbum = () => async(dispatch) => {
