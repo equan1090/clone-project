@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import * as sessionActions from '../../store/session';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams, Link } from 'react-router-dom';
+import { useDispatch} from 'react-redux';
+import { useHistory, useParams} from 'react-router-dom';
 import { updateAlbum } from '../../store/album';
 
 

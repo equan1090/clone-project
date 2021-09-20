@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 
-import { useHistory, Link, useParams } from "react-router-dom";
+
+import {  Link, useParams } from "react-router-dom";
 import './UserPage.css'
 
 
 function UserPage() {
-    const dispatch = useDispatch();
+
     const id = useParams();
     // const sessionUser = useSelector((state) => state.session.user);
 
@@ -15,9 +15,7 @@ function UserPage() {
             <div className='profile-header'>
                 <img src="https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/1631/posts/35798/image/SoundcloudBanner20.jpg"
                     alt="" className='profile-header'/>
-                {/* <div className='edit-image'>
-                    Hello
-                </div> */}
+  
 
 
             </div>

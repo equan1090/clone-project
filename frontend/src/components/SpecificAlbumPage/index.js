@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory, Link } from "react-router-dom";
 import { getAlbumSongs } from "../../store/song";
-import { getSpecificAlbum, removeAlbum, getUserAlbums, updateAlbum } from "../../store/album";
+import { getSpecificAlbum, removeAlbum} from "../../store/album";
 import './SpecificAlbumPage.css'
 
 
@@ -20,7 +20,7 @@ function SpecificAlbum() {
     useEffect(() => {
         dispatch(getAlbumSongs(params.albumId))
         dispatch(getSpecificAlbum(params.albumId))
-    }, [dispatch])
+    }, [dispatch, params])
 
 
 
@@ -45,7 +45,7 @@ function SpecificAlbum() {
                     {Array.isArray(songs) && songs?.map((song) => (
                         <div className='album-song-container' key={song.id}>
                             <Link to={`/songs/${song.id}`}>
-                                <img src={album.imageUrl} alt="Album Picture" />
+                                <img src={album.imageUrl} alt="" />
                                 <li>{song.name}</li>
                             </Link>
                         </div>
@@ -68,14 +68,14 @@ function SpecificAlbum() {
                     <div className='profile-header'>
                         <img src="https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/1631/posts/35798/image/SoundcloudBanner20.jpg"
                             alt="" className='profile-header'/>
-                        <h1 className='album-header-title'>{album.title}</h1>
                     </div>
+                        <h1 className='album-header-title'>{album.title}</h1>
 
                     <ul className='song-list'>
                         {Array.isArray(songs) && songs?.map((song) => (
                             <div className='album-song-container' key={song.id}>
                                 <Link to={`/songs/${song.id}`}>
-                                    <img src={album.imageUrl} alt="Album Picture" />
+                                    <img src={album.imageUrl} alt="" />
                                     <li>{song.name}</li>
                                 </Link>
                             </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSpecificSong } from "../../store/song";
 import { useParams } from "react-router-dom";
@@ -6,7 +6,7 @@ import './SongPage.css'
 import CommentForm from "../CommentForm";
 import DisplayComment from "../DisplayComment";
 import { useSongUrl } from "../../context/SongUrl";
-import { getSpecificAlbum } from "../../store/album";
+
 function SongPage() {
 
     const song = useSelector(state => state.songs.songs)
@@ -18,7 +18,7 @@ function SongPage() {
 
     useEffect(() => {
         dispatch(getSpecificSong(params.songId))
-    }, [dispatch])
+    }, [dispatch, params])
 
 
     console.log('My album',album)

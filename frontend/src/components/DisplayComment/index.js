@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { songComment } from '../../store/comments';
-import { getUser } from '../../store/user';
+
 function DisplayComment () {
     const dispatch = useDispatch();
     const id = useParams();
@@ -11,7 +11,7 @@ function DisplayComment () {
     useEffect(() => {
         dispatch(songComment(id.songId))
         // dispatch(getUser(1))
-    }, [dispatch])
+    }, [dispatch, id])
 
     return(
 

@@ -16,7 +16,7 @@ function AlbumPage() {
 
     useEffect(() => {
         dispatch(getUserAlbums(params.userId))
-    }, [dispatch])
+    }, [dispatch, params])
 
 
     return(
@@ -44,7 +44,7 @@ function AlbumPage() {
                         <div>
                             <li className="each-album" key={album.id}>
                                 <Link to={`/albums/${album.id}/songs`} key={`${album.id}`}>
-                                    <img src={`${album.imageUrl}`} alt="Image Location" />
+                                    <img src={`${album.imageUrl}`} alt="" />
                                 </Link>
                             </li>
                             <li className='album-title'>

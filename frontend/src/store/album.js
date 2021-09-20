@@ -5,7 +5,6 @@ import { csrfFetch } from './csrf';
 
 
 const CREATE = 'CREATE_ALBUM'
-const ADD = 'ADD_SONG'
 const DELETE = 'DELETE_ALBUM'
 const LOAD = 'LOAD_ALBUM'
 const UPDATE = 'UPDATE_ALBUM'

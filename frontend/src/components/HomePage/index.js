@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect } from 'react';
 import { getAlbum } from '../../store/album';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -22,7 +22,7 @@ function HomePage() {
                 {Array.isArray(albums) && albums?.map((album) => (
                             <li className="each-album" key={album.id}>
                                 <Link to={`/albums/${album.id}/songs`} key={`${album.id}`}>
-                                    <img src={`${album.imageUrl}`} alt="Image Location" />
+                                    <img src={`${album.imageUrl}`} alt="" />
                                     {album.title}
                                 </Link>
                             </li>
