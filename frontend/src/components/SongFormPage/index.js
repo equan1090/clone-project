@@ -33,7 +33,7 @@ function SongFormPage() {
         }
 
         const song = await dispatch(createSong(payload))
-        history.push(`/user/songs/${song.id}`)
+        history.push(`/songs/${song.id}`)
     }
 
 
