@@ -74,8 +74,9 @@ function SignupFormPage() {
             required
             className='signup-email'
           />
-
-        <button type="submit">Sign Up</button>
+        <div className='signup-btn'>
+          <button type="submit" >Sign Up</button>
+        </div>
       </form>
     </div>
   );

@@ -76,6 +76,7 @@ function SpecificAlbum() {
                             <div className='album-song-container' key={song.id}>
                                 <Link to={`/songs/${song.id}`}>
                                     <img src={album.imageUrl} alt="" />
+                                    
                                     <li>{song.name}</li>
                                 </Link>
                             </div>

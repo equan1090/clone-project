@@ -19,13 +19,14 @@ function HomePage() {
                 <h1>Welcome to Tune Cloud</h1>
                 <p>This app is a clone of SoundCloud for learning purposes only.</p>
                 <ul className='home-page-content'>
+
                 {Array.isArray(albums) && albums?.map((album) => (
-                            <li className="each-album" key={album.id}>
+
                                 <Link to={`/albums/${album.id}/songs`} key={`${album.id}`}>
                                     <img src={`${album.imageUrl}`} alt="" />
-                                    {album.title}
+                                    <li>{album.title}</li>
                                 </Link>
-                            </li>
+
                     ))}
                  </ul>
                 <div className='discover'>
