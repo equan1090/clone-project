@@ -1,0 +1,13 @@
+.home-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.home-page-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+

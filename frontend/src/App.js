@@ -11,9 +11,10 @@ import SongFormPage from './components/SongFormPage'
 import AlbumPage from "./components/AlbumPage";
 import SpecificAlbum from "./components/SpecificAlbumPage";
 import UserSongs from './components/UserSongs'
-import AudioBar from "./components/AudioBar";
+import AudioPlayer from "./components/AudioPlayer";
 import EditFormPage from "./components/EditFormPage/EditFormPage";
-
+import SongPage from "./components/SongPage"
+import HomePage from "./components/HomePage";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -27,6 +28,9 @@ function App() {
 
       {isLoaded && (
         <Switch>
+          <Route exact path='/'>
+            <HomePage />
+            </Route>
           <Route path="/users/:userId/albums">
             <AlbumPage />
           </Route>
@@ -51,13 +55,16 @@ function App() {
           <Route path="/songs/new">
             <SongFormPage />
           </Route>
+          <Route exact path="/songs/:songId">
+            <SongPage />
+          </Route>
           <Route path='/users/:userId/songs'>
             <UserSongs />
           </Route>
           <Route path='/'>Page not found</Route>
         </Switch>
       )}
-      <AudioBar />
+    <AudioPlayer />
     </>
   );
 }

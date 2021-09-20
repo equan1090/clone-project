@@ -5,7 +5,6 @@ import { csrfFetch } from './csrf';
 
 
 const CREATE = 'CREATE_ALBUM'
-const ADD = 'ADD_SONG'
 const DELETE = 'DELETE_ALBUM'
 const LOAD = 'LOAD_ALBUM'
 const UPDATE = 'UPDATE_ALBUM'
@@ -35,13 +34,6 @@ export const update = (album) => {
         payload: album
     }
 }
-
-// export const addSong = (newSong) => {
-//     return {
-//         type: ADD,
-//         payload: newSong
-//     }
-// }
 
 
 //Thunks

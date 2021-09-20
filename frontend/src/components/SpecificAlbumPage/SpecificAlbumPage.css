@@ -1,0 +1,22 @@
+.song-container {
+    margin: 0 auto;
+    background-color: white;
+    width: 65%;
+}
+
+
+
+.song-list {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.album-header-title {
+    text-align: center;
+}
+
+.crud-btn {
+    display: flex;
+    justify-content: space-evenly;
+}

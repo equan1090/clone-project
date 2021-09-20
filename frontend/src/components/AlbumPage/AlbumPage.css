@@ -2,7 +2,7 @@ img {
     height: 173px;
     width: 173px;
 }
-.content-container {
+/* .content-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,12 +11,22 @@ img {
     background-color: white;
     width: 65%;
     height: 100vh;
+} */
+
+.content-container {
+    background: white;
+    width: 65%;
+    margin: 0 auto;
 }
 .user-albums {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 ul {
     list-style: none;
+}
+.album-title {
+    text-align: center;
 }

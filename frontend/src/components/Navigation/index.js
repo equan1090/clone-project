@@ -22,7 +22,10 @@ function Navigation({ isLoaded }){
     sessionLinks = (
       <ul className='nav-links'>
         <li>
-          <NavLink to="/login" className="header__navMenuItem">Log In</NavLink>
+
+        </li>
+        <li>
+          <NavLink to="/login" className="header__navMenuItem">Log In/Demo User</NavLink>
         </li>
         <li>
           <NavLink to="/signup" className="header__navMenuItem">Sign Up</NavLink>
@@ -35,7 +38,7 @@ function Navigation({ isLoaded }){
       <header className='top-nav-bar'>
         <ul className='headerBtn'>
           <li>
-            <NavLink exact to="/" className="header__navMenuItem">Home</NavLink>
+            <NavLink exact to="/" className="header__navMenuItem">Tune Cloud</NavLink>
           </li>
           <li>
             <NavLink to="/songs/new" className="header__navMenuItem" id="uploadBtn">Upload</NavLink>

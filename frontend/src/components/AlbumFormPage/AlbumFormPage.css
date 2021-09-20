@@ -3,18 +3,13 @@
     background-color: white;
 }
 
-.login-form {
+.album-form {
     max-width: 500px;
     margin: 2rem auto;
     border: 2px solid black;
     padding: 2rem;
 
 }
-.login-inputs{
+.album-title {
     display: block;
-    margin: 1rem;
-}
-
-.login-btn {
-    text-align: center;
 }
