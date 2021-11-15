@@ -15,6 +15,7 @@ import AudioPlayer from "./components/AudioPlayer";
 import EditFormPage from "./components/EditFormPage/EditFormPage";
 import SongPage from "./components/SongPage"
 import HomePage from "./components/HomePage";
+import SplashPage from "./components/SplashPage";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -24,47 +25,72 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+
 
       {isLoaded && (
         <Switch>
           <Route exact path='/'>
+            <SplashPage/>
+          </Route>
+          <Route exact path='/home'>
+            <Navigation isLoaded={isLoaded} />
             <HomePage />
+            <AudioPlayer />
             </Route>
           <Route path="/users/:userId/albums">
+            <Navigation isLoaded={isLoaded} />
             <AlbumPage />
+            <AudioPlayer />
           </Route>
           <Route exact path="/users/:userId">
+            <Navigation isLoaded={isLoaded} />
             <UserPage />
+            <AudioPlayer />
           </Route>
           <Route path="/login">
+            <Navigation isLoaded={isLoaded} />
             <LoginFormPage />
+            <AudioPlayer />
           </Route>
           <Route path="/signup">
+            <Navigation isLoaded={isLoaded} />
             <SignupFormPage />
+            <AudioPlayer />
           </Route>
           <Route path='/albums/:albumId/edit'>
+           <Navigation isLoaded={isLoaded} />
             <EditFormPage />
+            <AudioPlayer />
           </Route>
           <Route path="/albums/:albumId/songs">
+            <Navigation isLoaded={isLoaded} />
             <SpecificAlbum />
+            <AudioPlayer />
           </Route>
           <Route path="/albums/new">
+            <Navigation isLoaded={isLoaded} />
             <AlbumFormPage />
+            <AudioPlayer />
           </Route>
           <Route path="/songs/new">
+            <Navigation isLoaded={isLoaded} />
             <SongFormPage />
+            <AudioPlayer />
           </Route>
           <Route exact path="/songs/:songId">
+            <Navigation isLoaded={isLoaded} />
             <SongPage />
+            <AudioPlayer />
           </Route>
           <Route path='/users/:userId/songs'>
+            <Navigation isLoaded={isLoaded} />
             <UserSongs />
+            <AudioPlayer />
           </Route>
           <Route path='/'>Page not found</Route>
         </Switch>
       )}
-    <AudioPlayer />
+
     </>
   );
 }
