@@ -1,4 +1,4 @@
-header {
+/* header {
     grid-area: header;
     width: 100vw;
     font-weight: 100;
@@ -10,10 +10,16 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 46px;
-}
-body {
-    margin: 0px;
-    padding: 0px;
+} */
+
+.top-nav-bar {
+    height: 100%;
+    width: 25%;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    
 }
 
 

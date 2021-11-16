@@ -1,7 +1,10 @@
 import React, {useEffect} from "react";
+import { Link } from "react-router-dom";
 import LoginFormPage from "../LoginFormPage";
 import githublogo from '../../images/github-logo.png'
 import linkedinlogo from '../../images/linkedin.png'
+
+import SignupFormPage from "../SignupFormPage";
 import './SplashPage.css'
 function SplashPage() {
 
@@ -22,7 +25,14 @@ function SplashPage() {
                     </a>
                 </div>
                 <div class="login-signup-area">
-                    <LoginFormPage/>
+                    <div className='login-area'>
+                        <h2 id='login-header'>Tune Cloud</h2>
+                        <LoginFormPage/>
+                    </div>
+                    <div className='signup-area'>
+                        Not registered? Sign up &nbsp;<Link to='/signup' className='sign-up-here'>here</Link>
+                    </div>
+
                 </div>
             </div>
         </div>
