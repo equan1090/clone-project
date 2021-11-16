@@ -16,6 +16,7 @@ import EditFormPage from "./components/EditFormPage/EditFormPage";
 import SongPage from "./components/SongPage"
 import HomePage from "./components/HomePage";
 import SplashPage from "./components/SplashPage";
+import ProtectedRoute from "./ProtectedRoute";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -32,21 +33,21 @@ function App() {
           <Route exact path='/'>
             <SplashPage/>
           </Route>
-          <Route exact path='/home'>
+          <ProtectedRoute exact path='/home'>
             <Navigation isLoaded={isLoaded} />
             <HomePage />
             <AudioPlayer />
-            </Route>
-          <Route path="/users/:userId/albums">
+            </ProtectedRoute>
+          <ProtectedRoute path="/users/:userId/albums">
             <Navigation isLoaded={isLoaded} />
             <AlbumPage />
             <AudioPlayer />
-          </Route>
-          <Route exact path="/users/:userId">
+          </ProtectedRoute>
+          <ProtectedRoute exact path="/users/:userId">
             <Navigation isLoaded={isLoaded} />
             <UserPage />
             <AudioPlayer />
-          </Route>
+          </ProtectedRoute>
           <Route path="/login">
             <Navigation isLoaded={isLoaded} />
             <LoginFormPage />
@@ -57,36 +58,36 @@ function App() {
             <SignupFormPage />
             <AudioPlayer />
           </Route>
-          <Route path='/albums/:albumId/edit'>
+          <ProtectedRoute path='/albums/:albumId/edit'>
            <Navigation isLoaded={isLoaded} />
             <EditFormPage />
             <AudioPlayer />
-          </Route>
-          <Route path="/albums/:albumId/songs">
+          </ProtectedRoute>
+          <ProtectedRoute path="/albums/:albumId/songs">
             <Navigation isLoaded={isLoaded} />
             <SpecificAlbum />
             <AudioPlayer />
-          </Route>
-          <Route path="/albums/new">
+          </ProtectedRoute>
+          <ProtectedRoute path="/albums/new">
             <Navigation isLoaded={isLoaded} />
             <AlbumFormPage />
             <AudioPlayer />
-          </Route>
-          <Route path="/songs/new">
+          </ProtectedRoute>
+          <ProtectedRoute path="/songs/new">
             <Navigation isLoaded={isLoaded} />
             <SongFormPage />
             <AudioPlayer />
-          </Route>
-          <Route exact path="/songs/:songId">
+          </ProtectedRoute>
+          <ProtectedRoute exact path="/songs/:songId">
             <Navigation isLoaded={isLoaded} />
             <SongPage />
             <AudioPlayer />
-          </Route>
-          <Route path='/users/:userId/songs'>
+          </ProtectedRoute>
+          <ProtectedRoute path='/users/:userId/songs'>
             <Navigation isLoaded={isLoaded} />
             <UserSongs />
             <AudioPlayer />
-          </Route>
+          </ProtectedRoute>
           <Route path='/'>Page not found</Route>
         </Switch>
       )}

@@ -1,0 +1,36 @@
+.splash-container {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-rows: 0.9fr 1.5fr 0.6fr;
+    gap: 25px 50px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "splash-text login-signup-area"
+      "splash-img login-signup-area"
+      "footer footer";
+  }
+
+  .splash-text {
+      grid-area: splash-text;
+      color: white;
+     }
+
+  .splash-img { grid-area: splash-img; }
+
+  .footer {
+      grid-area: footer;
+      display: flex;
+      justify-content: space-evenly;
+      align-self: flex-end;
+    }
+
+.login-signup-area { grid-area: login-signup-area; }
+
+#linkedin {
+    height: 64px;
+    width: 64px;
+}
+#github {
+    height: 64px;
+    width: 64px;
+}
