@@ -11,6 +11,11 @@
 }
 .content-container {
     background-color: inherit;
+
+}
+.headerBtn {
+    display: flex;
+    flex-direction: column;
 }
 
 

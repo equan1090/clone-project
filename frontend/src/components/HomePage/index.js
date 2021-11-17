@@ -3,6 +3,7 @@ import { getAlbum } from '../../store/album';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './HomePage.css'
+import Navigation from '../Navigation';
 
 function HomePage() {
     const dispatch = useDispatch();

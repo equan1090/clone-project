@@ -20,6 +20,7 @@ import ProtectedRoute from "./ProtectedRoute";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const location = ['home', 'createAlbum', 'uploadSong']
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -34,57 +35,57 @@ function App() {
             <SplashPage/>
           </Route>
           <ProtectedRoute exact path='/home'>
-            <Navigation isLoaded={isLoaded} />
+            <Navigation props={location[0]}/>
             <HomePage />
             <AudioPlayer />
             </ProtectedRoute>
           <ProtectedRoute path="/users/:userId/albums">
-            <Navigation isLoaded={isLoaded} />
+            <Navigation />
             <AlbumPage />
             <AudioPlayer />
           </ProtectedRoute>
           <ProtectedRoute exact path="/users/:userId">
-            <Navigation isLoaded={isLoaded} />
+            <Navigation />
             <UserPage />
             <AudioPlayer />
           </ProtectedRoute>
           <Route path="/login">
-            <Navigation isLoaded={isLoaded} />
+            <Navigation />
             <LoginFormPage />
             <AudioPlayer />
           </Route>
           <Route path="/signup">
-            <Navigation isLoaded={isLoaded} />
+            <Navigation />
             <SignupFormPage />
             <AudioPlayer />
           </Route>
           <ProtectedRoute path='/albums/:albumId/edit'>
-           <Navigation isLoaded={isLoaded} />
+           <Navigation />
             <EditFormPage />
             <AudioPlayer />
           </ProtectedRoute>
           <ProtectedRoute path="/albums/:albumId/songs">
-            <Navigation isLoaded={isLoaded} />
+            <Navigation />
             <SpecificAlbum />
             <AudioPlayer />
           </ProtectedRoute>
           <ProtectedRoute path="/albums/new">
-            <Navigation isLoaded={isLoaded} />
+            <Navigation props={location[1]}/>
             <AlbumFormPage />
             <AudioPlayer />
           </ProtectedRoute>
           <ProtectedRoute path="/songs/new">
-            <Navigation isLoaded={isLoaded} />
+            <Navigation props={location[2]}/>
             <SongFormPage />
             <AudioPlayer />
           </ProtectedRoute>
           <ProtectedRoute exact path="/songs/:songId">
-            <Navigation isLoaded={isLoaded} />
+            <Navigation />
             <SongPage />
             <AudioPlayer />
           </ProtectedRoute>
           <ProtectedRoute path='/users/:userId/songs'>
-            <Navigation isLoaded={isLoaded} />
+            <Navigation />
             <UserSongs />
             <AudioPlayer />
           </ProtectedRoute>
