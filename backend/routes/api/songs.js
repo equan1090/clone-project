@@ -33,6 +33,7 @@ router.post('/:songId/comments', asyncHandler(async(req, res) => {
 }))
 
 router.post('/', asyncHandler(async(req, res) => {
+    console.log('inside song post route')
     const song = await Song.create(req.body);
     res.json(song)
 }))

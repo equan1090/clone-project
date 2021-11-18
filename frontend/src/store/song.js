@@ -7,10 +7,10 @@ const DELETE = 'DELETE_SONG'
 const LOAD = 'LOAD_SONG'
 
 
-const add = (newSong) => {
+const add = (song) => {
     return {
         type: ADD,
-        payload: newSong
+        payload: song
     }
 }
 
@@ -45,17 +45,36 @@ export const getAlbumSongs = (albumId) => async(dispatch) => {
 }
 
 export const createSong = (songData) => async (dispatch) => {
-    const response = await csrfFetch('/api/songs', {
+    const {name, url, userId, albumId} = songData
+    const formData = new FormData()
+    formData.append('name', name)
+    formData.append('userId', userId)
+    formData.append('albumId', albumId)
+    console.log('checks to see if url')
+    if (url) formData.append('url', url)
+    console.log('this is my formData', formData)
+    const res = await csrfFetch(`/api/songs`, {
         method: "POST",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(songData)
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+        body: formData,
     })
+    const data = await res.json()
+    console.log('this is my data', data)
+    dispatch(add(data))
 
-    if(response.ok) {
-        const newSong = await response.json();
-        dispatch(add(newSong))
-        return newSong
-    }
+    // const response = await csrfFetch('/api/songs', {
+    //     method: "POST",
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify(songData)
+    // })
+
+    // if(response.ok) {
+    //     const newSong = await response.json();
+    //     dispatch(add(newSong))
+    //     return newSong
+    // }
 }
 
 export const deleteSong = () => async(dispatch) => {
@@ -86,17 +105,17 @@ export const getUserSongs = (id) => async(dispatch) => {
     }
 }
 
-const initialState= {songs:null}
+// const initialState= {songs:null}
+const initialState = []
 const songReducer = (state = initialState, action) => {
 
 
-    let newState;
+    let newState = {...state};
 
     switch(action.type) {
         case ADD:
             return {
-                ...state,
-                [action.payload.id]: action.payload
+                song: action.payload
             }
         case LOAD:
 

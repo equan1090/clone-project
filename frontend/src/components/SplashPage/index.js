@@ -10,13 +10,13 @@ function SplashPage() {
 
     return (
         <div className='splash-wrapper'>
-            <div class="splash-container">
-                <div class="splash-text">
+            <div className="splash-container">
+                <div className="splash-text">
                     <h3>Tune Cloud</h3>
                     <h1>Music for everyone, anytime</h1>
                 </div>
-                <div class="splash-img"></div>
-                <div class="footer">
+                <div className="splash-img"></div>
+                <div className="footer">
                     <a target="_blank" href="https://github.com/equan1090" rel="noreferrer">
                         <img id='github' src={githublogo} alt="" />
                     </a>
@@ -24,7 +24,7 @@ function SplashPage() {
                         <img id='linkedin' src={linkedinlogo} alt="" />
                     </a>
                 </div>
-                <div class="login-signup-area">
+                <div className="login-signup-area">
                     <div className='login-area'>
                         <h2 id='login-header'>Tune Cloud</h2>
                         <LoginFormPage/>
