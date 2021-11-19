@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const {Song, Comment} = require("../../db/models")
-
+const {singleMulterUpload, singlePublicFileUpload} = require('../../awsS3')
 
 const router = express.Router();
 
@@ -28,15 +28,32 @@ router.get('/:songId/comments', asyncHandler(async(req, res) => {
 }))
 
 router.post('/:songId/comments', asyncHandler(async(req, res) => {
+
     const comment = await Comment.create(req.body);
     res.json(comment)
 }))
 
-router.post('/', asyncHandler(async(req, res) => {
-    console.log('inside song post route')
-    const song = await Song.create(req.body);
-    res.json(song)
+router.post('/', singleMulterUpload("url"), asyncHandler(async (req, res) => {
+    console.log('in post route')
+    const {userId, name, albumId} = req.body;
+    const url = await singlePublicFileUpload(req.file);
+    const newSong = await Song.create({
+        userId,
+        name,
+        albumId,
+        url
+    })
+    setTokenCookie(res, newSong)
+    return res.json({
+        newSong,
+    })
 }))
+
+// router.post('/', asyncHandler(async(req, res) => {
+//     console.log('inside song post route')
+//     const song = await Song.create(req.body);
+//     res.json(song)
+// }))
 
 router.delete('/:songId', asyncHandler(async(req, res) => {
     const id = req.params

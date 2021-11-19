@@ -28,33 +28,35 @@ function SongFormPage() {
         e.preventDefault();
         console.log('in handle submit')
         let newErrors = []
-        // dispatch(createSong({name, url, userId: sessionUser.id, albumId}))
-        //     .then(() => {
-        //         setName("");
-        //         setUrl(null)
-        //         setAlbumId(null)
-        //     })
-            // .catch(async (res) => {
-            //     const data = await res.json();
-            //     if(data && data.errors) {
-            //         newErrors = data.errors;
-            //         setErrors(newErrors)
-            //     }
-            // })
+        dispatch(createSong({name, url, userId: sessionUser.id, albumId}))
+            .then(() => {
+                setName("");
+                setUrl(null)
+                setAlbumId(null)
+            })
+            .catch(async (res) => {
+                const data = await res.json();
+                if(data && data.errors) {
+                    newErrors = data.errors;
+                    setErrors(newErrors)
+                }
+            })
 
-        const payload = {
-            userId: sessionUser.id,
-            name,
-            url,
-            albumId: albumId === 'null' ? null : albumId
-        }
+        // const payload = {
+        //     userId: sessionUser.id,
+        //     name,
+        //     url,
+        //     albumId: albumId === 'null' ? null : albumId
+        // }
 
-        const song = await dispatch(createSong(payload))
-        history.push(`/songs/${song.id}`)
+
+        // dispatch(createSong(payload))
+        // history.push(`/songs/${song.id}`)
     }
 
     const updateFile = (e) => {
         const file = e.target.files[0]
+        console.log('this is file inside updateFile',file)
         if (file) setUrl(file);
     }
 

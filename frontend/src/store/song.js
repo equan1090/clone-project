@@ -1,7 +1,4 @@
-import { csrfFetch } from './csrf';
-
-
-
+import { csrfFetch } from "./csrf"
 const ADD = 'ADD_SONG'
 const DELETE = 'DELETE_SONG'
 const LOAD = 'LOAD_SONG'
@@ -45,14 +42,19 @@ export const getAlbumSongs = (albumId) => async(dispatch) => {
 }
 
 export const createSong = (songData) => async (dispatch) => {
+    console.log('inside createSong thunk')
     const {name, url, userId, albumId} = songData
+    // console.log('this is name', name)
+    // console.log('this is url', url)
+    // console.log('this is userId', userId)
+    // console.log('this is albumId', albumId)
     const formData = new FormData()
     formData.append('name', name)
     formData.append('userId', userId)
     formData.append('albumId', albumId)
-    console.log('checks to see if url')
+
     if (url) formData.append('url', url)
-    console.log('this is my formData', formData)
+    console.log('before res')
     const res = await csrfFetch(`/api/songs`, {
         method: "POST",
         headers: {
@@ -60,9 +62,17 @@ export const createSong = (songData) => async (dispatch) => {
         },
         body: formData,
     })
+    console.log('after res')
+
     const data = await res.json()
-    console.log('this is my data', data)
+    console.log('got a res back in store for createsong')
     dispatch(add(data))
+
+
+
+
+
+
 
     // const response = await csrfFetch('/api/songs', {
     //     method: "POST",
