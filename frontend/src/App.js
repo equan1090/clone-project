@@ -16,6 +16,7 @@ import EditFormPage from "./components/EditFormPage/EditFormPage";
 import SongPage from "./components/SongPage"
 import HomePage from "./components/HomePage";
 import SplashPage from "./components/SplashPage";
+import AudioBar from "./components/AudioPlayer";
 import ProtectedRoute from "./ProtectedRoute";
 function App() {
   const dispatch = useDispatch();
@@ -37,57 +38,57 @@ function App() {
           <ProtectedRoute exact path='/home'>
             <Navigation props={location[0]}/>
             <HomePage />
-            <AudioPlayer />
+            <AudioBar />
             </ProtectedRoute>
           <ProtectedRoute path="/users/:userId/albums">
             <Navigation />
             <AlbumPage />
-            <AudioPlayer />
+            <AudioBar />
           </ProtectedRoute>
           <ProtectedRoute exact path="/users/:userId">
             <Navigation />
             <UserPage />
-            <AudioPlayer />
+            <AudioBar />
           </ProtectedRoute>
           <Route path="/login">
             <Navigation />
             <LoginFormPage />
-            <AudioPlayer />
+            <AudioBar />
           </Route>
           <Route path="/signup">
             <Navigation />
             <SignupFormPage />
-            <AudioPlayer />
+            <AudioBar />
           </Route>
           <ProtectedRoute path='/albums/:albumId/edit'>
            <Navigation />
             <EditFormPage />
-            <AudioPlayer />
+            <AudioBar />
           </ProtectedRoute>
           <ProtectedRoute path="/albums/:albumId/songs">
             <Navigation />
             <SpecificAlbum />
-            <AudioPlayer />
+            <AudioBar />
           </ProtectedRoute>
           <ProtectedRoute path="/albums/new">
             <Navigation props={location[1]}/>
             <AlbumFormPage />
-            <AudioPlayer />
+            <AudioBar />
           </ProtectedRoute>
           <ProtectedRoute path="/songs/new">
             <Navigation props={location[2]}/>
             <SongFormPage />
-            <AudioPlayer />
+            <AudioBar />
           </ProtectedRoute>
           <ProtectedRoute exact path="/songs/:songId">
             <Navigation />
             <SongPage />
-            <AudioPlayer />
+            <AudioBar />
           </ProtectedRoute>
           <ProtectedRoute path='/users/:userId/songs'>
             <Navigation />
             <UserSongs />
-            <AudioPlayer />
+            <AudioBar />
           </ProtectedRoute>
           <Route path='/'>Page not found</Route>
         </Switch>

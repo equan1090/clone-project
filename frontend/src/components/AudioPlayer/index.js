@@ -5,7 +5,6 @@ import {useSongUrl} from '../../context/SongUrl'
 import './AudioPlayer.css'
 function AudioBar () {
     const {currentUrl} = useSongUrl();
-    console.log('*****SONG URL********', currentUrl)
     return(
         <div className='audio-container'>
             <AudioPlayer
