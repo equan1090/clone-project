@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const {Song, Comment} = require("../../db/models")
 const {singleMulterUpload, singlePublicFileUpload} = require('../../awsS3')
-
+// const {setTokenCookie} = require('../../utils/auth')
 const router = express.Router();
 
 
@@ -43,7 +43,7 @@ router.post('/', singleMulterUpload("url"), asyncHandler(async (req, res) => {
         albumId,
         url
     })
-    setTokenCookie(res, newSong)
+
     return res.json({
         newSong,
     })
