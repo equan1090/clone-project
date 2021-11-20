@@ -38,7 +38,7 @@ function App() {
           <ProtectedRoute exact path='/home'>
             <Navigation props={location[0]}/>
             <HomePage />
-            <AudioBar />
+
             </ProtectedRoute>
           <ProtectedRoute path="/users/:userId/albums">
             <Navigation />
@@ -91,7 +91,9 @@ function App() {
             <AudioBar />
           </ProtectedRoute>
           <Route path='/'>Page not found</Route>
+          
         </Switch>
+
       )}
 
     </>

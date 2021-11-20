@@ -4,14 +4,14 @@ const { check, validationResult } = require('express-validator');
 
 const {Album, Song} = require("../../db/models")
 
-
-
-
 const router = express.Router();
 
 //Can find all by user, will change in the future!!
 router.get('/', asyncHandler(async function (_req, res) {
-    const albums = await Album.findAll()
+    const albums = await Album.findAll({
+        order: [['updatedAt', 'ASC']],
+        LIMIT: 6
+    })
     res.json(albums)
 }))
 
@@ -21,6 +21,14 @@ router.get('/:albumId', asyncHandler(async(req, res) => {
     const album = await Album.findByPk(id.albumId)
     res.json(album)
 
+}))
+
+router.get('/created', asyncHandler(async(req, res) => {
+    const albums = await Album.findAll({
+        order: [['updatedAt', 'DESC']],
+        LIMIT: 6
+    })
+    res.json(albums)
 }))
 
 router.get('/:albumId/songs', asyncHandler(async(req, res) => {

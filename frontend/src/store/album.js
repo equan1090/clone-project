@@ -39,12 +39,19 @@ export const update = (album) => {
 //Thunks
 export const getAlbum = () => async(dispatch) => {
     const response = await csrfFetch('/api/albums');
-
     if(response.ok){
      const albums = await response.json();
      dispatch(load(albums))
     }
 };
+
+export const getNewAlbums = () => async(dispatch) => {
+    const response = await csrfFetch('/api/albums/created');
+    if(response.ok) {
+        const albums = await response.json();
+        dispatch(load(albums))
+    }
+}
 
 export const removeAlbum = (id) => async(dispatch) => {
     const response = await csrfFetch(`/api/albums/${id}/songs`, {
