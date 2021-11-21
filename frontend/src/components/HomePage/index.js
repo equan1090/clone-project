@@ -8,18 +8,18 @@ import Navigation from '../Navigation';
 
 function HomePage() {
     const dispatch = useDispatch();
-
-    const albums = useSelector(state => state.albums.albums)
-    const newAlbums = albums?.slice(0, 6)
+    let newAlbums = [];
+    const albums = useSelector(state => state?.albums?.albums)
+    if(albums?.length >= 5){
+        newAlbums = albums?.slice(0, 6)
+    } else{
+        newAlbums = albums
+    }
     // const newAlbums = useSelector(state => state.albums.albums)
 
     useEffect(() => {
         dispatch(getAlbum())
     }, [dispatch])
-    // useEffect(() => {
-    //     dispatch(getNewAlbums())
-    // }, [dispatch])
-    console.log('these are my albums', albums)
 
     return (
         <>
@@ -30,13 +30,7 @@ function HomePage() {
                 <ul className='home-page-content'>
 
                     {Array.isArray(newAlbums) && newAlbums?.map((album) => (
-
                             <AlbumCard album={album}/>
-                            // <Link to={`/albums/${album?.id}/songs`} key={`${album?.id}`}>
-                            //     {/* <img src={`${album.imageUrl}`} alt="" />
-                            //     <li>{album.title}</li> */}
-                            // </Link>
-
                         ))}
                  </ul>
                 <div className='discover'>
