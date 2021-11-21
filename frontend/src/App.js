@@ -15,56 +15,87 @@ import AudioPlayer from "./components/AudioPlayer";
 import EditFormPage from "./components/EditFormPage/EditFormPage";
 import SongPage from "./components/SongPage"
 import HomePage from "./components/HomePage";
+import SplashPage from "./components/SplashPage";
+import AudioBar from "./components/AudioPlayer";
+import ProtectedRoute from "./ProtectedRoute";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const location = ['home', 'createAlbum', 'uploadSong']
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+
 
       {isLoaded && (
         <Switch>
           <Route exact path='/'>
+            <SplashPage/>
+          </Route>
+          <ProtectedRoute exact path='/home'>
+            <Navigation props={location[0]}/>
             <HomePage />
-            </Route>
-          <Route path="/users/:userId/albums">
+
+            </ProtectedRoute>
+          <ProtectedRoute path="/users/:userId/albums">
+            <Navigation />
             <AlbumPage />
-          </Route>
-          <Route exact path="/users/:userId">
+            <AudioBar />
+          </ProtectedRoute>
+          <ProtectedRoute exact path="/users/:userId">
+            <Navigation />
             <UserPage />
-          </Route>
+            <AudioBar />
+          </ProtectedRoute>
           <Route path="/login">
+            <Navigation />
             <LoginFormPage />
+            <AudioBar />
           </Route>
           <Route path="/signup">
+            <Navigation />
             <SignupFormPage />
+            <AudioBar />
           </Route>
-          <Route path='/albums/:albumId/edit'>
+          <ProtectedRoute path='/albums/:albumId/edit'>
+           <Navigation />
             <EditFormPage />
-          </Route>
-          <Route path="/albums/:albumId/songs">
+            <AudioBar />
+          </ProtectedRoute>
+          <ProtectedRoute path="/albums/:albumId/songs">
+            <Navigation />
             <SpecificAlbum />
-          </Route>
-          <Route path="/albums/new">
+            <AudioBar />
+          </ProtectedRoute>
+          <ProtectedRoute path="/albums/new">
+            <Navigation props={location[1]}/>
             <AlbumFormPage />
-          </Route>
-          <Route path="/songs/new">
+            <AudioBar />
+          </ProtectedRoute>
+          <ProtectedRoute path="/songs/new">
+            <Navigation props={location[2]}/>
             <SongFormPage />
-          </Route>
-          <Route exact path="/songs/:songId">
+            <AudioBar />
+          </ProtectedRoute>
+          <ProtectedRoute exact path="/songs/:songId">
+            <Navigation />
             <SongPage />
-          </Route>
-          <Route path='/users/:userId/songs'>
+            <AudioBar />
+          </ProtectedRoute>
+          <ProtectedRoute path='/users/:userId/songs'>
+            <Navigation />
             <UserSongs />
-          </Route>
+            <AudioBar />
+          </ProtectedRoute>
           <Route path='/'>Page not found</Route>
+          
         </Switch>
+
       )}
-    <AudioPlayer />
+
     </>
   );
 }

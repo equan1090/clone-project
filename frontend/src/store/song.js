@@ -1,16 +1,13 @@
-import { csrfFetch } from './csrf';
-
-
-
+import { csrfFetch } from "./csrf"
 const ADD = 'ADD_SONG'
 const DELETE = 'DELETE_SONG'
 const LOAD = 'LOAD_SONG'
 
 
-const add = (newSong) => {
+const add = (song) => {
     return {
         type: ADD,
-        payload: newSong
+        payload: song
     }
 }
 
@@ -45,17 +42,49 @@ export const getAlbumSongs = (albumId) => async(dispatch) => {
 }
 
 export const createSong = (songData) => async (dispatch) => {
-    const response = await csrfFetch('/api/songs', {
-        method: "POST",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(songData)
-    })
+    console.log('inside createSong thunk')
+    const {name, url, userId, albumId} = songData
+    // console.log('this is name', name)
+    // console.log('this is url', url)
+    // console.log('this is userId', userId)
+    // console.log('this is albumId', albumId)
+    const formData = new FormData()
+    formData.append('name', name)
+    formData.append('userId', userId)
+    formData.append('albumId', albumId)
 
-    if(response.ok) {
-        const newSong = await response.json();
-        dispatch(add(newSong))
-        return newSong
-    }
+    if (url) formData.append('url', url)
+    console.log('before res')
+    const res = await csrfFetch(`/api/songs`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+        body: formData,
+    })
+    console.log('after res')
+
+    const data = await res.json()
+    console.log('got a res back in store for createsong')
+    dispatch(add(data))
+
+
+
+
+
+
+
+    // const response = await csrfFetch('/api/songs', {
+    //     method: "POST",
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify(songData)
+    // })
+
+    // if(response.ok) {
+    //     const newSong = await response.json();
+    //     dispatch(add(newSong))
+    //     return newSong
+    // }
 }
 
 export const deleteSong = () => async(dispatch) => {
@@ -86,17 +115,17 @@ export const getUserSongs = (id) => async(dispatch) => {
     }
 }
 
-const initialState= {songs:null}
+// const initialState= {songs:null}
+const initialState = []
 const songReducer = (state = initialState, action) => {
 
 
-    let newState;
+    let newState = {...state};
 
     switch(action.type) {
         case ADD:
             return {
-                ...state,
-                [action.payload.id]: action.payload
+                song: action.payload
             }
         case LOAD:
 

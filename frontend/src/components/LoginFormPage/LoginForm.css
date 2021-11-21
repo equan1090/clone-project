@@ -5,9 +5,8 @@
 
 .login-form {
     max-width: 500px;
-    margin: 2rem auto;
-    border: 2px solid black;
     padding: 2rem;
+    border-radius: 5px;
 
 }
 .login-inputs{
@@ -17,4 +16,5 @@
 
 .login-btn {
     text-align: center;
+    
 }

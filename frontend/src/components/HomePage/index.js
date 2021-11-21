@@ -1,13 +1,21 @@
 import React, {useEffect } from 'react';
-import { getAlbum } from '../../store/album';
+import { getAlbum} from '../../store/album';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import AlbumCard from '../AlbumCard';
 import './HomePage.css'
+import Navigation from '../Navigation';
 
 function HomePage() {
     const dispatch = useDispatch();
-
-    const albums = useSelector(state => state.albums.albums)
+    let newAlbums = [];
+    const albums = useSelector(state => state?.albums?.albums)
+    if(albums?.length >= 5){
+        newAlbums = albums?.slice(0, 6)
+    } else{
+        newAlbums = albums
+    }
+    // const newAlbums = useSelector(state => state.albums.albums)
 
     useEffect(() => {
         dispatch(getAlbum())
@@ -16,21 +24,17 @@ function HomePage() {
     return (
         <>
             <div className='content-container home-header'>
-                <h1>Welcome to Tune Cloud</h1>
-                <p>This app is a clone of SoundCloud for learning purposes only.</p>
+                <h2 style={{color:'white'}}>
+                    New
+                </h2>
                 <ul className='home-page-content'>
 
-                {Array.isArray(albums) && albums?.map((album) => (
-
-                                <Link to={`/albums/${album.id}/songs`} key={`${album.id}`}>
-                                    <img src={`${album.imageUrl}`} alt="" />
-                                    <li>{album.title}</li>
-                                </Link>
-
-                    ))}
+                    {Array.isArray(newAlbums) && newAlbums?.map((album) => (
+                            <AlbumCard album={album}/>
+                        ))}
                  </ul>
                 <div className='discover'>
-
+                    <h2 style={{color:'white'}}>Discover</h2>
                 </div>
 
             </div>

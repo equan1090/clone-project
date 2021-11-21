@@ -1,0 +1,28 @@
+.album-card{
+    margin: 1rem;
+    background-color: #1d1c1c;
+    padding: 10px;
+    border-radius: 5px;
+}
+.album-card:hover{
+    cursor: pointer;
+    background-color: #dcdcdc59;
+    transition: .25s;
+}
+
+
+#album-card-name {
+    color:white;
+}
+.card-link {
+    text-decoration: none;
+}
+#album-card-link {
+    text-decoration: none;
+    color: #dcdcdc8f;
+    font-size: 14px;
+}
+#album-card-link:hover{
+    border-bottom: 1px #dcdcdc8f solid;
+
+}

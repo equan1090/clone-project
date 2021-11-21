@@ -7,7 +7,15 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    background-color: inherit;
 }
+.content-container {
+    background-color: inherit;
 
+}
+.headerBtn {
+    display: flex;
+    flex-direction: column;
+}
 
 

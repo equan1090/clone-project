@@ -1,0 +1,92 @@
+.splash-container {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-rows: 0.9fr 1.5fr 0.6fr;
+    gap: 25px 50px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "splash-text login-signup-area"
+      "splash-img login-signup-area"
+      "footer footer";
+  }
+
+  .splash-text {
+      grid-area: splash-text;
+      color: #dcdcdc;
+     }
+
+  .splash-img { grid-area: splash-img; }
+
+  .footer {
+      grid-area: footer;
+      display: flex;
+      justify-content: space-evenly;
+      align-self: flex-end;
+    }
+
+.login-signup-area {
+    grid-area: login-signup-area;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    margin-top: 20%;
+
+ }
+
+#linkedin {
+    height: 64px;
+    width: 64px;
+}
+#github {
+    height: 64px;
+    width: 64px;
+}
+.login-area {
+    background-color: #ddd;
+    text-align: center;
+    border-radius: 5px;
+}
+.login-header {
+    margin-bottom: 0;
+}
+.signup-area {
+    background-color: #ddd;
+    margin: 2rem;
+    padding: 1.5rem 2rem;
+    border-radius: 5px;
+}
+#login-btn {
+    background-color: #0079d3;
+    border: none;
+    width: 80%;
+    font-weight: bold;
+    border-radius: 20px;
+    color: white;
+    height: 1.5rem;
+}
+#demo-btn {
+    width: 100%;
+    margin: 1rem 0;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-weight: 700;
+    color: #FF3B3F;
+}
+a.sign-up-here {
+    font-weight: bold;
+    color: #ff3b3f;
+}
+a.sign-up-here:visited {
+    font-weight: bold;
+    color: #ff3b3f;
+}
+
+input {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    background-color: #eee;
+}

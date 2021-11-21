@@ -1,4 +1,4 @@
-header {
+/* header {
     grid-area: header;
     width: 100vw;
     font-weight: 100;
@@ -10,16 +10,29 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 46px;
+} */
+
+.top-nav-bar {
+    height: 100%;
+    width: 20%;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+
 }
-body {
-    margin: 0px;
-    padding: 0px;
+#home-btn {
+    font-size: 30px;
 }
 
 
-a, a:visited {
+a.header__navMenuItem, a.header__navMenuItem:visited {
     text-decoration: none;
-    color: black;
+    color: #dcdcdc8f;
+
 }
 
 .header__navMenuItem {
@@ -27,7 +40,7 @@ a, a:visited {
     padding: 12px 0;
     height: 46px;
     box-sizing: border-box;
-
+    padding-left: 1rem;
 }
 
 .headerBtn li {
@@ -73,4 +86,20 @@ a, a:visited {
 
 #uploadBtn {
     color: #f50;
+}
+li a.header__navMenuItem {
+    text-decoration: none;
+}
+li a.header__navMenuItem:hover {
+    transition-duration: .5s;
+    color: white;
+}
+
+.headerBtn li {
+    margin: .5rem;
+}
+
+a.active {
+    background-color: #383838;
+
 }

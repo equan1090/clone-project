@@ -13,7 +13,8 @@ function SongFormPage() {
     const history = useHistory();
     const [name, setName] = useState('')
     const [url, setUrl] = useState('')
-    const [albumId, setAlbumId] = useState('null')
+    const [albumId, setAlbumId] = useState(null)
+    const [errors, setErrors] = useState([])
 
     //takes the current state as an argument and returns whatever data you want from it
     const sessionUser = useSelector(state => state.session.user);
@@ -25,17 +26,39 @@ function SongFormPage() {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        const payload = {
-            userId: sessionUser.id,
-            name,
-            url,
-            albumId: albumId === 'null' ? null : albumId
-        }
+        console.log('in handle submit')
+        let newErrors = []
+        dispatch(createSong({name, url, userId: sessionUser.id, albumId}))
+            .then(() => {
+                setName("");
+                setUrl(null)
+                setAlbumId(null)
+            })
+            .catch(async (res) => {
+                const data = await res.json();
+                if(data && data.errors) {
+                    newErrors = data.errors;
+                    setErrors(newErrors)
+                }
+            })
 
-        const song = await dispatch(createSong(payload))
-        history.push(`/songs/${song.id}`)
+        // const payload = {
+        //     userId: sessionUser.id,
+        //     name,
+        //     url,
+        //     albumId: albumId === 'null' ? null : albumId
+        // }
+
+
+        // dispatch(createSong(payload))
+        // history.push(`/songs/${song.id}`)
     }
 
+    const updateFile = (e) => {
+        const file = e.target.files[0]
+        console.log('this is file inside updateFile',file)
+        if (file) setUrl(file);
+    }
 
     const albums = useSelector(state => state.albums.albums)
 
@@ -56,10 +79,8 @@ function SongFormPage() {
                     className='song-title'
 
                 />
-                <input type="text"
-                    placeholder='URL'
-                    value={url}
-                    onChange={(e) => setUrl(e.target.value)}
+                <input type="file"
+                    onChange={updateFile}
                     required
                     className='song-url'
                 />
@@ -67,7 +88,7 @@ function SongFormPage() {
                     value={albumId}
                     onChange={(e) => setAlbumId(e.target.value)}>
                     <option value="null" disabled selected>Add to Album</option>
-                    <option value="null">None</option>
+                    <option value="null" defaultValue>None</option>
                     {Array.isArray(albums) && albums?.map((album) => (
                         <option value={`${album.id}`} key={`${album.id}`}>{album.title}</option>
                     ))}

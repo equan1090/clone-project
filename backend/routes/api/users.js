@@ -46,7 +46,10 @@ router.get('/:userId/albums', async(req, res) => {
 })
 //Get specific user
 router.get('/:userId', async(req, res) => {
-  const {id} = req.params;
+
+
+  const id = req.params.userId;
+
   const user = await User.findByPk(id)
   res.json(user);
 })
