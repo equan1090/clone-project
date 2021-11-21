@@ -1,4 +1,4 @@
-.form-container {
+/* .form-container {
     margin: 0 auto;
     background-color: white;
 }
@@ -15,4 +15,22 @@
 }
 .song-url{
     display: block;
+} */
+.upload-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+.song-form {
+    display: flex;
+    flex-direction: column;
+}
+.form-container {
+    height: 50vh;
+    border-radius: 5px;
+    padding: 3rem;
+    width: 30vw;
+
 }

@@ -26,37 +26,44 @@ function SongFormPage() {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        console.log('in handle submit')
-        let newErrors = []
+        let errors = []
+        const acceptedTypes = ['mp3']
+
+        let fileArr = url ? url.name.split('.') : null
+        let fileType = url ? fileArr[fileArr.length - 1]: null
+
+        if(!url) errors.push('Please provide an mp3 audio file')
+        if(url && !acceptedTypes.includes(fileType)) errors.push('Filetype must be of type .mp3')
+        if(name.length > 30) errors.push('Title must be 30 characters or less')
+        if(name.length < 5) errors.push('Title must be at least 5 characters long')
+        if(errors.length) {
+            console.log('these are my current errors',errors)
+            setErrors(errors)
+            return null
+        }
+        setErrors('')
+
         dispatch(createSong({name, url, userId: sessionUser.id, albumId}))
             .then(() => {
                 setName("");
                 setUrl(null)
                 setAlbumId(null)
             })
-            .catch(async (res) => {
-                const data = await res.json();
-                if(data && data.errors) {
-                    newErrors = data.errors;
-                    setErrors(newErrors)
-                }
-            })
-
-        // const payload = {
-        //     userId: sessionUser.id,
-        //     name,
-        //     url,
-        //     albumId: albumId === 'null' ? null : albumId
-        // }
+            // .catch(async (res) => {
+            //     const data = await res.json();
+            //     if(data && data.errors) {
+            //         errors = data.errors;
+            //         setErrors(errors)
+            //     }
+            // })
 
 
-        // dispatch(createSong(payload))
-        // history.push(`/songs/${song.id}`)
     }
 
     const updateFile = (e) => {
         const file = e.target.files[0]
-        console.log('this is file inside updateFile',file)
+
+        console.log('\n\n\nthis is file inside updateFile\n\n\n',file)
         if (file) setUrl(file);
     }
 
@@ -67,34 +74,42 @@ function SongFormPage() {
     }, [dispatch, sessionUser])
 
     return (
-        <div className='form-container'>
+        <div className='upload-wrapper'>
+            <div className='form-container'>
 
-            <form onSubmit={handleSubmit}
-            className='song-form'>
-                <input type="text"
-                    placeholder="Song Title"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                    className='song-title'
 
-                />
-                <input type="file"
-                    onChange={updateFile}
-                    required
-                    className='song-url'
-                />
-                <select name="albums"
-                    value={albumId}
-                    onChange={(e) => setAlbumId(e.target.value)}>
-                    <option value="null" disabled selected>Add to Album</option>
-                    <option value="null" defaultValue>None</option>
-                    {Array.isArray(albums) && albums?.map((album) => (
-                        <option value={`${album.id}`} key={`${album.id}`}>{album.title}</option>
+                <form onSubmit={handleSubmit}
+                    className='song-form'>
+                    <input type="text"
+                        placeholder="Song Title"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                        className='song-title'
+
+                    />
+                    <input type="file"
+                        onChange={updateFile}
+                        required
+                        className='song-url'
+                    />
+                    <select name="albums"
+                        value={albumId}
+                        onChange={(e) => setAlbumId(e.target.value)}>
+                        <option value="null" disabled selected>Add to Album</option>
+                        <option value="null" defaultValue>None</option>
+                        {Array.isArray(albums) && albums?.map((album) => (
+                            <option value={`${album.id}`} key={`${album.id}`}>{album.title}</option>
+                        ))}
+                    </select>
+                    <button type="submit">Submit</button>
+                </form>
+                {errors && errors.map((error, ind) => (
+                        <div className='errors' key={ind}>
+                            {error}
+                        </div>
                     ))}
-                </select>
-                <button type="submit">Submit</button>
-            </form>
+            </div>
         </div>
     )
 }
