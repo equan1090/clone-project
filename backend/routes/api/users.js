@@ -3,6 +3,7 @@ const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
 const { User, Album, Song } = require('../../db/models');
+const {singleMulterUpload, singlePublicFileUpload} = require('../../awsS3')
 
 const router = express.Router();
 
@@ -52,6 +53,32 @@ router.get('/:userId', async(req, res) => {
 
   const user = await User.findByPk(id)
   res.json(user);
+})
+router.patch('/:userId', singleMulterUpload('image'), async(req, res) => {
+  // const {userId} = req.params;
+  console.log('this is userId', req.params)
+  let {userId, username, email, image} = req.body
+
+
+  const user = await User.findByPk(userId)
+  if(req.file) {
+    image = await singlePublicFileUpload(req.file)
+  }
+  console.log('this is userId', userId)
+  console.log('this is email', email)
+  console.log('this is username', username)
+  console.log('This is image \n\n\n\n',image)
+  console.log(typeof image)
+
+  if(user) {
+    console.log('Inside user\n\n\n')
+    await user.update({username, email, image})
+    return res.status(301).json(user)
+  }else {
+    console.log('not user')
+    return res.status(404).json('User not found')
+  }
+
 })
 
 router.get('/:userId/songs', async(req, res) => {

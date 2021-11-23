@@ -18,6 +18,7 @@ import HomePage from "./components/HomePage";
 import SplashPage from "./components/SplashPage";
 import AudioBar from "./components/AudioPlayer";
 import ProtectedRoute from "./ProtectedRoute";
+import EditProfile from "./components/EditProfile";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -38,7 +39,6 @@ function App() {
           <ProtectedRoute exact path='/home'>
             <Navigation props={location[0]}/>
             <HomePage />
-
             </ProtectedRoute>
           <ProtectedRoute path="/users/:userId/albums">
             <Navigation />
@@ -49,6 +49,10 @@ function App() {
             <Navigation />
             <UserPage />
             <AudioBar />
+          </ProtectedRoute>
+          <ProtectedRoute exact path="/users/:userId/edit">
+            <Navigation />
+            <EditProfile />
           </ProtectedRoute>
           <Route path="/login">
             <Navigation />
@@ -91,7 +95,7 @@ function App() {
             <AudioBar />
           </ProtectedRoute>
           <Route path='/'>Page not found</Route>
-          
+
         </Switch>
 
       )}

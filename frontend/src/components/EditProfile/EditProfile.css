@@ -1,0 +1,10 @@
+.profile-edit-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.edit-profile-form {
+    display: flex;
+    flex-direction: column;
+}

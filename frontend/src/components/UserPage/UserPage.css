@@ -37,6 +37,8 @@
 .edit-profile-image:hover {
     opacity: .75;
     cursor: pointer;
+    background-color: #2b2b2b;
+
 
 }
 #profile-username {
