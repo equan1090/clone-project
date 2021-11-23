@@ -17,11 +17,9 @@
     display: block;
 } */
 .upload-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
+    position: relative;
+    top: 20%;
+    left: 5%;
 }
 .song-form {
     display: flex;

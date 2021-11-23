@@ -97,35 +97,32 @@ export const updateAlbum = (album, id) => async(dispatch) => {
     }
 }
 
-// export const newSong = (songData) => async(dispatch) => {
-//     const response = await csrfFetch(`/api/album/`, {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(songData)
-//     })
-
-//     if(response.ok) {
-//         const song = await response.json();
-//         dispatch(addSong(song))
-//         return song;
-//     }
-// }
 
 export const createAlbum = (albumData) => async (dispatch) => {
+
+    const {userId, title, imageUrl} = albumData
+    const formData = new FormData()
+
+    formData.append('title', title)
+    formData.append('userId', userId)
+
+    if(imageUrl) formData.append('imageUrl', imageUrl)
+   
     const response = await csrfFetch('/api/albums/new', {
         method: "POST",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(albumData)
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+        body: formData,
     })
 
     if(response.ok){
         const newAlbum = await response.json();
-        dispatch(addNewAlbum(newAlbum));
-        return newAlbum
+        return dispatch(addNewAlbum(newAlbum));
     }
 }
 
-const initialState = {albums:null}
+const initialState = []
 
 const albumReducer = (state = initialState, action) => {
 
@@ -135,8 +132,7 @@ const albumReducer = (state = initialState, action) => {
 
         case CREATE:
             return {
-                ...state,
-                [action.payload.id] : action.payload
+                album: action.payload
             }
 
         case LOAD:

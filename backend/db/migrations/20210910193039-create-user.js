@@ -24,7 +24,8 @@ module.exports = {
       },
       image: {
         type: Sequelize.STRING(500),
-        allowNull: true
+        allowNull: false,
+        defaultValue: 'https://tune-cloud-audio.s3.us-west-1.amazonaws.com/default-profile.png'
       },
       createdAt: {
         allowNull: false,

@@ -1,9 +1,48 @@
+
 .profile-header {
-    background-color: red;
+
+    background-color: #2b2b2b;
     height: 260px;
-    width: 100%;
+    width: 80%;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+.profile-picture-container {
+    margin: 0 1rem;
+
 }
 
+#profile-picture {
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.edit-profile-image {
+    position: absolute;
+    opacity: 0;
+    height: 173px;
+    width: 173px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    left: 1rem;
+    align-items: flex-end;
+
+}
+.edit-profile-image:hover {
+    opacity: .75;
+    cursor: pointer;
+
+}
+#profile-username {
+    color: #fff;
+    font-size: 64px;
+}
 .profile-page-tabs {
     display: flex;
     justify-content: space-evenly;
@@ -14,6 +53,7 @@
     height: 150px;
     background-color: blue;
     border-radius: 50%;
+
 
 }
 

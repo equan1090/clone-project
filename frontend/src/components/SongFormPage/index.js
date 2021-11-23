@@ -35,9 +35,9 @@ function SongFormPage() {
         if(!url) errors.push('Please provide an mp3 audio file')
         if(url && !acceptedTypes.includes(fileType)) errors.push('Filetype must be of type .mp3')
         if(name.length > 30) errors.push('Title must be 30 characters or less')
-        if(name.length < 5) errors.push('Title must be at least 5 characters long')
+        if(name.length < 4) errors.push('Title must be at least 4 characters long')
         if(errors.length) {
-            console.log('these are my current errors',errors)
+            
             setErrors(errors)
             return null
         }
@@ -49,21 +49,13 @@ function SongFormPage() {
                 setUrl(null)
                 setAlbumId(null)
             })
-            // .catch(async (res) => {
-            //     const data = await res.json();
-            //     if(data && data.errors) {
-            //         errors = data.errors;
-            //         setErrors(errors)
-            //     }
-            // })
-
 
     }
 
     const updateFile = (e) => {
         const file = e.target.files[0]
 
-        console.log('\n\n\nthis is file inside updateFile\n\n\n',file)
+
         if (file) setUrl(file);
     }
 

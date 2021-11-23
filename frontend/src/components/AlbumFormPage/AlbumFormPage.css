@@ -1,6 +1,12 @@
 .form-container {
-    margin: 0 auto;
+
+    /* margin: 0 auto;
     background-color: white;
+    height: 100vh; */
+    position: relative;
+    top: 20%;
+    left: 5%;
+
 }
 
 .album-form {

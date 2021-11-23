@@ -31,7 +31,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     image: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
+      defaultValue: "https://tune-cloud-audio.s3.us-west-1.amazonaws.com/default-profile.png"
     },
   },
   {

@@ -9,6 +9,7 @@ function ProfileButton({ user }) {
   const history = useHistory()
   const [showMenu, setShowMenu] = useState(false);
 
+
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
@@ -28,7 +29,7 @@ function ProfileButton({ user }) {
 
   const logout = (e) => {
     e.preventDefault();
-    
+
     dispatch(sessionActions.logout());
   };
 
@@ -40,8 +41,9 @@ function ProfileButton({ user }) {
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
-          <li><Link to={`/users/${user.id}`}>My Profile</Link></li>
-          <li>{user.email}</li>
+          <li><Link to={`/users/${user.id}`}>
+            My Profile</Link>
+          </li>
           <li>
             <button onClick={logout}>Log Out</button>
           </li>

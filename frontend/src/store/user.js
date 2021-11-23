@@ -9,12 +9,12 @@ export const load = (user) => ({
 })
 
 export const getUser = (id) => async(dispatch) => {
-    console.log('this is in store', id)
+
     const response = await csrfFetch(`/api/users/${id}`)
 
     if(response.ok) {
         const user = await response.json();
-        console.log('user from inside response.ok', user)
+        
         await dispatch(load(user));
     }
 }
@@ -24,7 +24,7 @@ const userReducer = (state = initialState, action) => {
 
     switch(action.type) {
         case LOAD:
-            
+
             return {
                 user: action.payload
             }

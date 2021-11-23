@@ -21,9 +21,6 @@ function SongPage() {
     }, [dispatch, params])
 
 
-    console.log('My album',album)
-
-
     return (
         <div className='song-content-container'>
             <div className='song-content-header'>

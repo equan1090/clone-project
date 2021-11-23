@@ -25,7 +25,7 @@ function LoginFormPage() {
   }
 
   return (
-    <div className='form-container'>
+    <div className='splash-form-container'>
 
       <form onSubmit={handleSubmit}
       className='login-form'>

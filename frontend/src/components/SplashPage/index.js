@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import LoginFormPage from "../LoginFormPage";
 import githublogo from '../../images/github-logo.png'
 import linkedinlogo from '../../images/linkedin.png'
-
 import SignupFormPage from "../SignupFormPage";
 import './SplashPage.css'
 function SplashPage() {

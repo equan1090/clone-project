@@ -9,16 +9,17 @@ import './Navigation.css';
 
 function Navigation({props}){
   const sessionUser = useSelector(state => state.session.user);
-  console.log('this is navigation props', props)
+
+  console.log('this is session.user', sessionUser)
 
   let sessionLinks;
-  if (sessionUser) {
-    sessionLinks = (
-      <div>
-        <ProfileButton user={sessionUser} />
-      </div>
-    );
-  }
+  // if (sessionUser) {
+  //   sessionLinks = (
+  //     <div>
+  //       <ProfileButton user={sessionUser} />
+  //     </div>
+  //   );
+  // }
 
   if (props === 'home'){
     return (
