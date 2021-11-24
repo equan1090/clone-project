@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 // import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
+import { csrfFetch } from '../../store/csrf';
 
 import { createSong } from '../../store/song';
 import { useHistory } from 'react-router-dom';
 import { getUserAlbums } from '../../store/album';
 import './SongFormPage.css'
-
+import ProfileButton from '../Navigation/ProfileButton';
 function SongFormPage() {
     //dispatch any action to the store
     const dispatch = useDispatch();
@@ -15,6 +16,7 @@ function SongFormPage() {
     const [url, setUrl] = useState('')
     const [albumId, setAlbumId] = useState(null)
     const [errors, setErrors] = useState([])
+    const [loading, setLoading] = useState(false)
 
     //takes the current state as an argument and returns whatever data you want from it
     const sessionUser = useSelector(state => state.session.user);
@@ -37,19 +39,40 @@ function SongFormPage() {
         if(name.length > 30) errors.push('Title must be 30 characters or less')
         if(name.length < 4) errors.push('Title must be at least 4 characters long')
         if(errors.length) {
-            
+
             setErrors(errors)
             return null
         }
         setErrors('')
 
-        dispatch(createSong({name, url, userId: sessionUser.id, albumId}))
-            .then(() => {
-                setName("");
-                setUrl(null)
-                setAlbumId(null)
-            })
+        const formData = new FormData();
+        formData.append('name', name)
+        formData.append('userId', sessionUser?.id)
+        formData.append('albumId', albumId)
+        if(url) formData.append('url', url)
 
+        setLoading(true)
+        // const data = await dispatch(createSong({name, url, userId: sessionUser.id, albumId}))
+        //     .then(() => {
+        //         setName("");
+        //         setUrl(null)
+        //         setAlbumId(null)
+        //     })
+        const res = await csrfFetch(`/api/songs`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+            body: formData,
+        })
+        if(res.ok){
+            const data = await res.json()
+            console.log('This is data\n\n\n', data)
+            setLoading(false)
+            history.push(`/songs/${data?.newSong?.id}`)
+        }
+        // console.log('this is the song i just uploaded', data)
+        // history.push('/songs/')
     }
 
     const updateFile = (e) => {
@@ -66,7 +89,8 @@ function SongFormPage() {
     }, [dispatch, sessionUser])
 
     return (
-        <div className='upload-wrapper'>
+        <>
+            <ProfileButton user={sessionUser} />
             <div className='form-container'>
 
 
@@ -101,8 +125,11 @@ function SongFormPage() {
                             {error}
                         </div>
                     ))}
+                {loading && (
+                    <p>Loading...</p>
+                )}
             </div>
-        </div>
+        </>
     )
 }
 

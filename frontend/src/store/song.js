@@ -42,7 +42,7 @@ export const getAlbumSongs = (albumId) => async(dispatch) => {
 }
 
 export const createSong = (songData) => async (dispatch) => {
-    
+
     const {name, url, userId, albumId} = songData
 
     const formData = new FormData()
@@ -64,7 +64,7 @@ export const createSong = (songData) => async (dispatch) => {
     const data = await res.json()
 
     dispatch(add(data))
-
+    return data;
 
 
 

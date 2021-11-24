@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createAlbum } from '../../store/album';
+import { createAlbum, load } from '../../store/album';
 import './AlbumFormPage.css'
 import ProfileButton from '../Navigation/ProfileButton';
 function AlbumFormPage() {
@@ -10,6 +10,7 @@ function AlbumFormPage() {
     const [title, setTitle] = useState('')
     const [image, setImage] = useState('')
     const [errors, setErrors] = useState([])
+    const [loading, setLoading] = useState(false)
     const history = useHistory();
 
     //takes the current state as an argument and returns whatever data you want from it
@@ -44,16 +45,16 @@ function AlbumFormPage() {
             title,
             imageUrl: image
         }
-
-        dispatch(createAlbum(payload))
+        setLoading(true)
+        await dispatch(createAlbum(payload))
             .then(() => {
                 setTitle("")
                 setImage(null)
             })
-
+        setLoading(false)
         // await dispatch(createAlbum(payload))
 
-        // history.push(`/users/${sessionUser.id}/albums`)
+        history.push(`/users/${sessionUser.id}`)
 
     }
 
@@ -87,6 +88,9 @@ function AlbumFormPage() {
                                 {error}
                             </div>
                         ))}
+                    {loading && (
+                        <p>Loading...</p>
+                    )}
                 </div>
             </div>
         </>

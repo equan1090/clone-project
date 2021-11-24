@@ -26,10 +26,10 @@ function Navigation({props}){
         <header className='top-nav-bar'>
 
             <li>
-              <NavLink exact to="/" id='home-btn' className="header__navMenuItem">Tune Cloud</NavLink>
+              <NavLink exact to="/home" id='home-btn' className="header__navMenuItem">Tune Cloud</NavLink>
             </li>
             <li>
-              <NavLink exact to='/' className="header__navMenuItem active">Home</NavLink>
+              <NavLink exact to='/home' className="header__navMenuItem active">Home</NavLink>
             </li>
             <li>
               <NavLink exact to='/albums/new' className='header__navMenuItem'>Create Album</NavLink>
@@ -46,10 +46,10 @@ function Navigation({props}){
         <header className='top-nav-bar'>
 
             <li>
-              <NavLink exact to="/" id='home-btn' className="header__navMenuItem">Tune Cloud</NavLink>
+              <NavLink exact to="/home" id='home-btn' className="header__navMenuItem">Tune Cloud</NavLink>
             </li>
             <li>
-              <NavLink exact to='/' className="header__navMenuItem">Home</NavLink>
+              <NavLink exact to='/home' className="header__navMenuItem">Home</NavLink>
             </li>
             <li>
               <NavLink exact to='/albums/new' className='header__navMenuItem active'>Create Album</NavLink>
@@ -68,10 +68,10 @@ function Navigation({props}){
         <header className='top-nav-bar'>
 
             <li>
-              <NavLink exact to="/" id='home-btn' className="header__navMenuItem">Tune Cloud</NavLink>
+              <NavLink exact to="/home" id='home-btn' className="header__navMenuItem">Tune Cloud</NavLink>
             </li>
             <li>
-              <NavLink exact to='/' className="header__navMenuItem">Home</NavLink>
+              <NavLink exact to='/home' className="header__navMenuItem">Home</NavLink>
             </li>
             <li>
               <NavLink exact to='/albums/new' className='header__navMenuItem'>Create Album</NavLink>

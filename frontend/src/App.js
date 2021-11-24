@@ -39,6 +39,7 @@ function App() {
           <ProtectedRoute exact path='/home'>
             <Navigation props={location[0]}/>
             <HomePage />
+            <AudioBar />
             </ProtectedRoute>
           <ProtectedRoute path="/users/:userId/albums">
             <Navigation />
