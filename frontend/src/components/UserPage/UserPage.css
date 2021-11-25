@@ -1,4 +1,86 @@
+.profile-wrapper {
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr;
+    grid-template-rows: 0.9fr 1.5fr 0.6fr;
+    grid-auto-columns: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "Navigation profile-page-header"
+      "Navigation profile-album-list"
+      "Navigation .";
+  }
 
+  .Navigation {
+      grid-area: Navigation;
+    }
+
+  .profile-page-header {
+      grid-area: profile-page-header;
+      background-color: #2b2b2b;
+      height: 260px;
+      width: 80%;
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+  .profile-album-list {
+      grid-area: profile-album-list;
+    }
+
+    .profile-picture-container {
+        margin: 0 1rem;
+
+    }
+
+    #profile-picture {
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .edit-profile-image {
+        position: absolute;
+        opacity: 0;
+        height: 173px;
+        width: 173px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        left: 1rem;
+        align-items: flex-end;
+
+    }
+    .edit-profile-image:hover {
+        opacity: .75;
+        cursor: pointer;
+        background-color: #2b2b2b;
+
+
+    }
+    #profile-username {
+        color: #fff;
+        font-size: 64px;
+    }
+    .profile-page-tabs {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .edit-image {
+        width: 150px;
+        height: 150px;
+        background-color: blue;
+        border-radius: 50%;
+
+
+    }
+
+
+/*
 .profile-header {
 
     background-color: #2b2b2b;
@@ -58,4 +140,4 @@
 
 
 }
-
+ */

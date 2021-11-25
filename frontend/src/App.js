@@ -47,7 +47,7 @@ function App() {
             <AudioBar />
           </ProtectedRoute>
           <ProtectedRoute exact path="/users/:userId">
-            <Navigation />
+
             <UserPage />
             <AudioBar />
           </ProtectedRoute>
@@ -71,7 +71,7 @@ function App() {
             <AudioBar />
           </ProtectedRoute>
           <ProtectedRoute path="/albums/:albumId/songs">
-            <Navigation />
+
             <SpecificAlbum />
             <AudioBar />
           </ProtectedRoute>

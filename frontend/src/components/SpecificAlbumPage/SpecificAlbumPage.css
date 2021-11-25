@@ -1,22 +1,97 @@
-.song-container {
-    margin: 0 auto;
-    background-color: white;
-    width: 65%;
+.container {
+    display: grid;
+    grid-template-columns: 0.38fr 1.5fr;
+    grid-template-rows: 0.9fr 1.5fr 0.6fr;
+    grid-auto-columns: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "Navigation album-profile-header"
+      "Navigation song-list"
+      "Navigation more-album";
+  }
+
+.Navigation {
+    grid-area: Navigation;
 }
-
-
-
 .song-list {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+    grid-area: song-list;
+    margin: 0 3rem;
+    color: #737b7b;
+
+}
+ol {
+    padding: 0;
 }
 
-.album-header-title {
-    text-align: center;
+.each-song{
+    display: flex;
+    flex-direction: row;
+    padding: 1rem 0;
+}
+.each-song:hover {
+    background-color: #383838;
+}
+#song-column {
+    border-bottom: solid 1px #737b7b;
+}
+.album-profile-header {
+    grid-area: album-profile-header;
+    background-color: #2b2b2b;
+    height: 260px;
+    display: flex;
+    align-items: center;
+
+
+}
+#album-image {
+    margin: 0 1rem;
+}
+#album-title {
+    color: white;
+    font-size: 64px;
+}
+.more-album {
+     grid-area: more-album;
 }
 
-.crud-btn {
+
+
+/* .song-container {
+
+    background-color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+}
+.album-profile-header {
+    background-color: #2b2b2b;
+    width: 80%;
+    position: fixed;
+    right: 0px;
+    display: flex;
+    flex-direction: row;
+    height: 260px;
+    align-items: center;
+
+
+}
+.song-list {
+    width: 80%;
+    position: fixed;
+    right: 0px;
+}
+
+#album-image {
+    margin-left: 1rem;
+}
+#album-title {
+    color: white;
+    font-size: 64px;
+    margin-left: 1rem;
+} */
+/* .crud-btn {
     display: flex;
     justify-content: space-evenly;
-}
+} */
