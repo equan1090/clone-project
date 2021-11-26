@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { csrfFetch } from '../../store/csrf';
-
+import Navigation from '../Navigation';
 import { createSong } from '../../store/song';
 import { useHistory } from 'react-router-dom';
 import { getUserAlbums } from '../../store/album';
@@ -90,6 +90,7 @@ function SongFormPage() {
 
     return (
         <>
+            <Navigation />
             <ProfileButton user={sessionUser} />
             <div className='form-container'>
 

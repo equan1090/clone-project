@@ -9,8 +9,6 @@ function AudioBar () {
         <div className='audio-container'>
             <AudioPlayer
                 src={currentUrl}
-                onPlay={e => console.log("onPlay")}
-                // other props here
             />
         </div>
 

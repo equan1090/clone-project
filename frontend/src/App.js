@@ -37,33 +37,21 @@ function App() {
             <SplashPage/>
           </Route>
           <ProtectedRoute exact path='/home'>
-            <Navigation props={location[0]}/>
+
             <HomePage />
             <AudioBar />
             </ProtectedRoute>
-          <ProtectedRoute path="/users/:userId/albums">
-            <Navigation />
-            <AlbumPage />
-            <AudioBar />
-          </ProtectedRoute>
           <ProtectedRoute exact path="/users/:userId">
-
             <UserPage />
             <AudioBar />
           </ProtectedRoute>
           <ProtectedRoute exact path="/users/:userId/edit">
             <Navigation />
             <EditProfile />
+            <AudioBar />
           </ProtectedRoute>
-          <Route path="/login">
-            <Navigation />
-            <LoginFormPage />
-            <AudioBar />
-          </Route>
           <Route path="/signup">
-            <Navigation />
             <SignupFormPage />
-            <AudioBar />
           </Route>
           <ProtectedRoute path='/albums/:albumId/edit'>
            <Navigation />
@@ -71,17 +59,14 @@ function App() {
             <AudioBar />
           </ProtectedRoute>
           <ProtectedRoute path="/albums/:albumId/songs">
-
             <SpecificAlbum />
             <AudioBar />
           </ProtectedRoute>
           <ProtectedRoute path="/albums/new">
-            <Navigation props={location[1]}/>
             <AlbumFormPage />
             <AudioBar />
           </ProtectedRoute>
           <ProtectedRoute path="/songs/new">
-            <Navigation props={location[2]}/>
             <SongFormPage />
             <AudioBar />
           </ProtectedRoute>
@@ -90,11 +75,11 @@ function App() {
             <SongPage />
             <AudioBar />
           </ProtectedRoute>
-          <ProtectedRoute path='/users/:userId/songs'>
+          {/* <ProtectedRoute path='/users/:userId/songs'>
             <Navigation />
             <UserSongs />
             <AudioBar />
-          </ProtectedRoute>
+          </ProtectedRoute> */}
           <Route path='/'>Page not found</Route>
 
         </Switch>

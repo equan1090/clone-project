@@ -26,6 +26,8 @@
 }
 #home-btn {
     font-size: 30px;
+    color: #dcdcdc8f;
+    margin-left: 1rem;
 }
 
 
@@ -128,5 +130,4 @@ li a.header__navMenuItem:hover {
 
 a.active {
     background-color: #383838;
-
 }

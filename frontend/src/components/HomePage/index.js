@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import AlbumCard from '../AlbumCard';
 import './HomePage.css'
 import ProfileButton from '../Navigation/ProfileButton';
-
+import Navigation from '../Navigation';
 function HomePage() {
     const dispatch = useDispatch();
     let newAlbums = [];
@@ -25,6 +25,7 @@ function HomePage() {
     return (
         <>
             <div className='content-container home-header'>
+                <Navigation />
                 <ProfileButton user={sessionUser} />
                 <h2 style={{color:'white'}}>
                     New

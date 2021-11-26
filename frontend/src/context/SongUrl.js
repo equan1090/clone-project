@@ -1,14 +1,14 @@
-import { createContext, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 
 
-export const SongContext = createContext();
+export const SongContext = React.createContext();
 
-export const SongProvider = (props) => {
+export const SongProvider = ({children}) => {
     const [currentUrl, setCurrentUrl] = useState('')
 
     return (
         <SongContext.Provider value={{currentUrl, setCurrentUrl}}>
-            {props.children}
+            {children}
         </SongContext.Provider>
     )
 

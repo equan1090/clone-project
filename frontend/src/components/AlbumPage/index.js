@@ -21,12 +21,7 @@ function AlbumPage() {
 
     return(
         <div className='content-container'>
-            <div className='profile-header'>
 
-            <img src="https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/1631/posts/35798/image/SoundcloudBanner20.jpg"
-                    alt="" className='profile-header'/>
-
-            </div>
             <div className='profile-page-nav'>
                 <ul className='profile-page-tabs'>
                     <li>

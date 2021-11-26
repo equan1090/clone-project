@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { createAlbum, load } from '../../store/album';
 import './AlbumFormPage.css'
 import ProfileButton from '../Navigation/ProfileButton';
+import Navigation from '../Navigation';
 function AlbumFormPage() {
     //dispatch any action to the store
     const dispatch = useDispatch();
@@ -66,6 +67,7 @@ function AlbumFormPage() {
 
     return (
         <>
+            <Navigation />
             <ProfileButton user={sessionUser} />
             <div className='form-container'>
                 <div className='album-form'>

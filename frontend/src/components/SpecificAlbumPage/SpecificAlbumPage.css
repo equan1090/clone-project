@@ -9,6 +9,7 @@
       "Navigation album-profile-header"
       "Navigation song-list"
       "Navigation more-album";
+    background-color: #121212;
   }
 
 .Navigation {
@@ -18,6 +19,7 @@
     grid-area: song-list;
     margin: 0 3rem;
     color: #737b7b;
+    height: 100%;
 
 }
 ol {
@@ -28,6 +30,7 @@ ol {
     display: flex;
     flex-direction: row;
     padding: 1rem 0;
+
 }
 .each-song:hover {
     background-color: #383838;

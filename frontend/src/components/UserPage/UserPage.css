@@ -28,8 +28,21 @@
       align-items: center;
     }
 
-  .profile-album-list {
-      grid-area: profile-album-list;
+.profile-album-list {
+    grid-area: profile-album-list;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+
+}
+    #album-header {
+        margin-top: 3rem;
+        color: white;
+    }
+    .album-list {
+        display: flex;
+        flex-direction: row;
     }
 
     .profile-picture-container {
