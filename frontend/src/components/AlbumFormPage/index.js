@@ -85,6 +85,8 @@ function AlbumFormPage() {
                         />
                         <button type='submit'>Submit</button>
                     </form>
+                </div>
+                    <p>*Note* Must create an album before uploading songs</p>
                     {errors && errors.map((error, ind) => (
                             <div className='errors' key={ind}>
                                 {error}
@@ -93,7 +95,6 @@ function AlbumFormPage() {
                     {loading && (
                         <p>Loading...</p>
                     )}
-                </div>
             </div>
         </>
     )

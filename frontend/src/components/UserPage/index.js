@@ -54,15 +54,7 @@ function UserPage() {
                 </div>
             </div>
             <div class="profile-album-list">
-                <ul className='profile-page-tabs'>
-                     <li>
-                         <Link to={`/users/${id.userId}`}>Albums</Link>
-                    </li>
-                     <li>
-                         <Link to={`/users/${id.userId}/songs`}>Tracks</Link>
-                     </li>
 
-               </ul>
                 <h1 id='album-header'>Albums</h1>
                 <div className='album-list'>
                     {Array.isArray(albums) && albums?.map((album) => (
