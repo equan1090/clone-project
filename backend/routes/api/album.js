@@ -43,7 +43,7 @@ router.get('/:albumId/songs', asyncHandler(async(req, res) => {
 
 router.post('/new', singleMulterUpload("imageUrl"), asyncHandler(async(req,res) => {
     const {userId, title} = req.body
-    console.log('this is req.file inside post route', req.file)
+
     const imageUrl = await singlePublicFileUpload(req.file)
 
     const album = await Album.create({
