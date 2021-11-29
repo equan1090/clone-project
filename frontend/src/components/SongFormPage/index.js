@@ -95,7 +95,7 @@ function SongFormPage() {
     }, [dispatch, sessionUser])
 
     return (
-        <>
+        <div className='upload-song-wrapper'>
             <Navigation />
             <ProfileButton user={sessionUser} />
             <div className='form-container'>
@@ -125,7 +125,7 @@ function SongFormPage() {
                             <option value={`${album.id}`} key={`${album.id}`}>{album.title}</option>
                         ))}
                     </select>
-                    <button type="submit">Submit</button>
+                    <button id='upload-song-btn' type="submit">Submit</button>
                 </form>
                 {errors && errors.map((error, ind) => (
                         <div className='errors' key={ind}>
@@ -136,7 +136,7 @@ function SongFormPage() {
                     <p>Loading...</p>
                 )}
             </div>
-        </>
+        </div>
     )
 }
 

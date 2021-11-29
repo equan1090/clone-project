@@ -1,34 +1,45 @@
-/* .form-container {
-    margin: 0 auto;
-    background-color: white;
-}
 
-.song-form {
-    max-width: 500px;
-    margin: 2rem auto;
-    border: 2px solid black;
-    padding: 2rem;
-
-}
-.song-title {
-    display: block;
-}
-.song-url{
-    display: block;
-} */
-.upload-wrapper {
-    position: relative;
-    top: 20%;
-    left: 5%;
+.upload-song-wrapper {
+    width: 80vw;
+    position: absolute;
+    right: 0px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .song-form {
     display: flex;
     flex-direction: column;
+    background-color: #15172b;
 }
 .form-container {
-    height: 50vh;
-    border-radius: 5px;
-    padding: 3rem;
-    width: 30vw;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #15172b;
+    width: 25%;
+    height: 50%;
+
+}
+#upload-song-btn {
+    background-color: #08d;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    font-size: 18px;
+    height: 2rem;
+    margin-top: 1rem;
+    text-align: center;
+    width: 100%;
+}
+
+.song-form input {
+    margin: .5rem 0;
+    background-color: #303245;
+    color: white
 
 }

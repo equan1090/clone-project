@@ -66,27 +66,28 @@ function AlbumFormPage() {
     }
 
     return (
-        <>
+        <div className='album-form-wrapper'>
             <Navigation />
             <ProfileButton user={sessionUser} />
-            <div className='form-container'>
+            <div className='create-album-container'>
                 <div className='album-form'>
-                    <form onSubmit={handleSubmit}>
+                    <form id='create-album-form' onSubmit={handleSubmit}>
                         <input type="text"
-                            className="album-title"
+                            className="input"
                             placeholder="Title"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                             required
                         />
                         <input type="file"
+                        className='input'
                             onChange={updateFile}
                             required
                         />
-                        <button type='submit'>Submit</button>
                     </form>
+                    <button id='create-album-btn' type='submit'>Submit</button>
                 </div>
-                    <p>*Note* Must create an album before uploading songs</p>
+                    <p id='note'>*Note* Must create an album before uploading songs</p>
                     {errors && errors.map((error, ind) => (
                             <div className='errors' key={ind}>
                                 {error}
@@ -96,7 +97,7 @@ function AlbumFormPage() {
                         <p>Loading...</p>
                     )}
             </div>
-        </>
+        </div>
     )
 }
 

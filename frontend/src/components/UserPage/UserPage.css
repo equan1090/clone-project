@@ -58,8 +58,8 @@
     .edit-profile-image {
         position: absolute;
         opacity: 0;
-        height: 173px;
-        width: 173px;
+        height: 180px;
+        width: 175px;
         border-radius: 50%;
         display: flex;
         justify-content: center;

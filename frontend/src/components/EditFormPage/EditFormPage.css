@@ -1,22 +1,44 @@
 .album-edit-wrapper {
-    width: 100vw;
+    width: 80vw;
     height: 100vh;
+    position: absolute;
+    right: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .album-edit-container {
-    width: 30%;
-    background-color: white;
-    padding: 2rem;
+    border-radius: 15px;
     display: flex;
     justify-content: center;
-    margin-left: 3rem;
+    align-items: center;
+    background-color: #15172b;
+    width: 25%;
+    height: 50%;
 }
 
 .album-edit-form {
     display: flex;
     flex-direction: column;
+    background-color: #15172b;
+}
+.album-edit-form input {
+    margin: .5rem 0;
+    background-color: #303245;
+    color: white
+}
 
+.album-edit-form button {
+    background-color: #08d;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    font-size: 18px;
+    height: 2rem;
+    margin-top: 1rem;
+    text-align: center;
+    width: 100%;
 }
