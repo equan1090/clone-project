@@ -56,8 +56,7 @@ export const getUser = (id) => async(dispatch) => {
 
     if(response.ok) {
         const user = await response.json();
-
-        await dispatch(load(user));
+        dispatch(load(user));
     }
 }
 

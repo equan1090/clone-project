@@ -6,12 +6,14 @@ import './AlbumCard.css'
 function AlbumCard(props) {
     const dispatch = useDispatch()
     const album = props.album
+    const userId = props.userId
     const user = useSelector(state => state.users.user)
+    console.log('album', album)
+    console.log('this is user,', user)
 
-
-    useEffect(() => {
-        dispatch(getUser(album?.userId))
-    }, [dispatch, album])
+    // useEffect(() => {
+    //     dispatch(getUser(userId))
+    // }, [dispatch])
 
 
     return (
@@ -26,7 +28,7 @@ function AlbumCard(props) {
                     </div>
                 </Link>
                 <div className='album-card-owner'>
-                    <Link id="album-card-link" to={`/users/${user?.id}`}>{user?.username}</Link>
+                    <Link id="album-card-link" to={`/users/${album.userId}`}>More from Creator</Link>
                 </div>
             </div>
         </>

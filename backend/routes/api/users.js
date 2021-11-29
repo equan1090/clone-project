@@ -52,6 +52,7 @@ router.get('/:userId', async(req, res) => {
   const id = req.params.userId;
 
   const user = await User.findByPk(id)
+  console.log('this is user in backend\n\n\n', user)
   res.json(user);
 })
 router.patch('/:userId', singleMulterUpload('image'), async(req, res) => {

@@ -33,7 +33,8 @@ function HomePage() {
                 <ul className='home-page-content'>
 
                     {Array.isArray(newAlbums) && newAlbums?.map((album) => (
-                            <AlbumCard album={album}/>
+
+                            <AlbumCard album={album} userId={album.userId}/>
                         ))}
                  </ul>
                 <div className='discover'>
