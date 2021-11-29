@@ -84,15 +84,18 @@ export const createSong = (songData) => async (dispatch) => {
     // }
 }
 
-export const deleteSong = () => async(dispatch) => {
+// export const deleteSong = (id) => async(dispatch) => {
 
-    const response = await csrfFetch('/api/songs/:songId')
-    if(response.ok) {
-        const song = await response.json();
-        dispatch(remove(song))
-    }
+//     const response = await csrfFetch(`/api/songs/${id}`, {
+//         method:'DELETE',
+//     })
+//     if(response.ok) {
+//         console.log('inside res.ok for delete song')
+//         const song = await response.json();
+//         dispatch(load(song))
+//     }
 
-}
+// }
 
 export const getSpecificSong = (id) => async(dispatch) => {
     const response = await csrfFetch(`/api/songs/${id}`)
@@ -132,8 +135,8 @@ const songReducer = (state = initialState, action) => {
 
         case DELETE:
             return {
-                ...state,
-                [action.payload.song]: action.payload
+                newState,
+                song: action.payload
             }
 
         default:

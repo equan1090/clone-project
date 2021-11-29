@@ -7,6 +7,7 @@ import { createSong } from '../../store/song';
 import { useHistory } from 'react-router-dom';
 import { getUserAlbums } from '../../store/album';
 import './SongFormPage.css'
+import ScaleLoader from 'react-spinners/ScaleLoader'
 import ProfileButton from '../Navigation/ProfileButton';
 function SongFormPage() {
     //dispatch any action to the store
@@ -132,9 +133,14 @@ function SongFormPage() {
                             {error}
                         </div>
                     ))}
-                {loading && (
-                    <p>Loading...</p>
-                )}
+
+                    <div className='loading-screen'>
+                        {loading && (
+                            <ScaleLoader
+                            color={"#F37A24"}
+                            size={150} />
+                            )}
+                    </div>
             </div>
         </div>
     )

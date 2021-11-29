@@ -1,12 +1,14 @@
 import React, { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory, Link } from "react-router-dom";
-import { getAlbumSongs } from "../../store/song";
+import { getAlbumSongs} from "../../store/song";
 import { getSpecificAlbum, removeAlbum} from "../../store/album";
 import './SpecificAlbumPage.css'
 import Navigation from "../Navigation";
 import ProfileButton from "../Navigation/ProfileButton";
 import { useSongUrl } from "../../context/SongUrl";
+import deleteIcon from '../../images/delete.png'
+import editIcon from '../../images/edit-icon.png'
 
 function SpecificAlbum() {
 
@@ -32,6 +34,9 @@ function SpecificAlbum() {
         history.push(`/users/${sessionUser.id}`)
 
     }
+    // const handleDeleteSong = (songId) => {
+    //     dispatch(deleteSong(songId))
+    // }
 
     const AlbumOwner = () => {
         console.log('this is sessionUserId', sessionUser?.id)
@@ -74,13 +79,21 @@ function SpecificAlbum() {
                 </div>
                 <ol>
                     {songs?.map((song, idx) => (
-                        <div className='each-song' onClick={() => {
-                            setCurrentUrl(song?.url)
-                        }}>
-                            <div>
-                                {idx + 1}
+                        <div className='each-song-container'>
+                            <div className='each-song' onClick={() => {
+                                setCurrentUrl(song?.url)}}>
+                                <div>
+                                    {idx + 1}
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{song.name}
+                                </div>
                             </div>
-                            <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{song.name}</div>
+                            {/* <div className='song-edit'>
+                                <button className='delete-song'
+                                    onClick={handleDeleteSong(song.id)}
+                                >
+                                    <img id='delete-img' src={deleteIcon} alt="" />
+                                </button>
+                            </div> */}
                         </div>
                     ))}
                 </ol>

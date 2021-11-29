@@ -26,14 +26,31 @@ ol {
     padding: 0;
 }
 
+#delete-img {
+    height: 16px;
+    width: 16px;
+}
+.delete-song {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+.each-song-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 .each-song{
     display: flex;
     flex-direction: row;
     padding: 1rem 0;
-
+    cursor: pointer;
+    justify-content: space-between;
+    width: 100%;
 }
 .each-song:hover {
     background-color: #383838;
+
 }
 #song-column {
     border-bottom: solid 1px #737b7b;

@@ -5,6 +5,7 @@ import { createAlbum, load } from '../../store/album';
 import './AlbumFormPage.css'
 import ProfileButton from '../Navigation/ProfileButton';
 import Navigation from '../Navigation';
+import ScaleLoader from 'react-spinners/ScaleLoader'
 function AlbumFormPage() {
     //dispatch any action to the store
     const dispatch = useDispatch();
@@ -84,8 +85,8 @@ function AlbumFormPage() {
                             onChange={updateFile}
                             required
                         />
+                        <button id='create-album-btn' type='submit'>Submit</button>
                     </form>
-                    <button id='create-album-btn' type='submit'>Submit</button>
                 </div>
                     <p id='note'>*Note* Must create an album before uploading songs</p>
                     {errors && errors.map((error, ind) => (
@@ -93,9 +94,14 @@ function AlbumFormPage() {
                                 {error}
                             </div>
                         ))}
-                    {loading && (
-                        <p>Loading...</p>
-                    )}
+                    <div className='loading-screen'>
+                        {loading && (
+                            <ScaleLoader
+                            color={"#F37A24"}
+                            size={150} />
+                        )}
+
+                    </div>
             </div>
         </div>
     )

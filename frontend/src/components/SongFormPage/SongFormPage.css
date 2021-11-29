@@ -21,6 +21,7 @@
     background-color: #15172b;
     width: 25%;
     height: 50%;
+    flex-direction: column;
 
 }
 #upload-song-btn {
@@ -41,5 +42,9 @@
     margin: .5rem 0;
     background-color: #303245;
     color: white
-
+}
+.loading-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -55,12 +55,16 @@ router.post('/', singleMulterUpload("url"), asyncHandler(async (req, res) => {
 //     res.json(song)
 // }))
 
-router.delete('/:songId', asyncHandler(async(req, res) => {
-    const id = req.params
-    const song = await Song.findByPk(id.songId)
-    await song.destroy();
-    res.json(song)
-}))
+// router.delete('/:songId', asyncHandler(async(req, res) => {
+//     const id = req.params
+//     console.log('inside delete')
+
+//     console.log('this is id backend\n\n\n', id)
+
+//     const song = await Song.findByPk(id.songId)
+//     await song.destroy();
+//     res.json(song)
+// }))
 
 
 module.exports = router;

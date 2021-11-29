@@ -48,3 +48,9 @@
 #note {
     color: white;
 }
+
+.loading-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
