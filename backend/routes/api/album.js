@@ -56,10 +56,19 @@ router.post('/new', singleMulterUpload("imageUrl"), asyncHandler(async(req,res) 
     })
 }))
 
-router.put('/:albumId', asyncHandler(async(req,res) => {
+router.patch('/:albumId', singleMulterUpload('imageUrl'), asyncHandler(async(req,res) => {
     const {albumId} = req.params
-    const {title, imageUrl} = req.body
+    let {title, imageUrl} = req.body
     const album = await Album.findByPk(albumId)
+    console.log('inside patch request')
+
+
+    if(req.file) {
+        console.log('inside req.file')
+
+        imageUrl = await singlePublicFileUpload(req.file)
+        console.log('this is imageUrl in backend \n\n\n', imageUrl)
+    }
 
     if(album){
         await album.update({title, imageUrl})

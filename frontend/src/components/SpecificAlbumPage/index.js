@@ -24,26 +24,35 @@ function SpecificAlbum() {
         dispatch(getSpecificAlbum(params.albumId))
 
     }, [dispatch, params])
-    console.log('this is songs', songs)
+
 
     const deleteAlbum = async () => {
 
         await dispatch(removeAlbum(params?.albumId))
-        history.push(`/users/${sessionUser.id}/albums`)
+        history.push(`/users/${sessionUser.id}`)
 
     }
 
     const AlbumOwner = () => {
+        console.log('this is sessionUserId', sessionUser?.id)
+        console.log('this is albumuserID', album?.userId)
         if(sessionUser?.id === album?.userId){
             return (
-                <div className='crud-btn'>
-                    <Link to={`/albums/${params.albumId}/edit`}>Edit</Link>
-
-                    <button onClick={deleteAlbum}>
-                        Delete Album
-                    </button>
+                <>
+                <div className='edit-album'
+                onClick={() => history.push(`/albums/${params.albumId}/edit`)}
+                >
+                    <p>Edit</p>
                 </div>
+                 <div className='crud-btn'>
+                     <button id='delete-album-btn' onClick={deleteAlbum}>
+                         Delete Album
+                     </button>
+                 </div>
+                </>
             )
+        }else{
+            return null
         }
     }
 
@@ -55,9 +64,11 @@ function SpecificAlbum() {
             <div className="album-profile-header">
                 <ProfileButton user={sessionUser} />
                 <img id='album-image' src={album?.imageUrl} alt="" />
+                <AlbumOwner />
                 <h1 id='album-title'>{album?.title}</h1>
             </div>
             <div className='song-list'>
+
                 <div id='song-column'>
                     <p># &nbsp;&nbsp;&nbsp; Title</p>
                 </div>

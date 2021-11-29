@@ -1,0 +1,22 @@
+.album-edit-wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.album-edit-container {
+    width: 30%;
+    background-color: white;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    margin-left: 3rem;
+}
+
+.album-edit-form {
+    display: flex;
+    flex-direction: column;
+
+}

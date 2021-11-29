@@ -21,6 +21,7 @@ function EditProfile() {
 
     const updateFile = (e) => {
         const file = e.target.files[0]
+        console.log('this is profile image', file)
         if (file) setImage(file);
     }
     const handleSubmit = async(e) => {
@@ -35,10 +36,9 @@ function EditProfile() {
             fileArr = image ? image.name.split('.') : null
             fileType = image ? fileArr[fileArr.length - 1]: null
         }
-        console.log('over here', image)
-        console.log(typeof image === 'string')
+
         if(!(typeof image === 'string') && image && !acceptedTypes.includes(fileType)) errors.push('Image must be either a png or jpeg')
-        if(username.length < 3 || username.length > 30) errors.push('Username must be between 3-30 chars')
+        if(username.length < 4 || username.length > 30) errors.push('Username must be between 3-30 chars')
 
         if(errors.length) {
             setErrors(errors)
@@ -66,32 +66,43 @@ function EditProfile() {
     }
 
     return(
-        <>
+        <div className='profile-edit-wrapper'>
             <div className='profile-edit-container'>
                 <form className='edit-profile-form' onSubmit={handleSubmit}>
-                    <input type="text"
-                    name='username'
-                    onChange={(e) => {setUsername(e.target.value)}}
-                    value={username}
-                    required={true}
-                    />
-                    <input type="email"
-                    name='email'
-                    value={email}
-                    onChange={(e) => {setEmail(e.target.value)}}
-                    required={true}
-                    />
-                    <input type="file"
-                    name='image'
-                    onChange={updateFile}
-                    />
-                    <button type='submit'>Edit</button>
+                    <div className='each-input input-container'>
+                        <label htmlFor="username">Username</label>
+                        <input type="text"
+                        name='username'
+                        className='input'
+                        onChange={(e) => {setUsername(e.target.value)}}
+                        value={username}
+                        required={true}
+                        />
+                    </div>
+                    <div className='each-input input-container'>
+                        <label htmlFor="email">Email</label>
+                        <input type="email"
+                        className='input'
+                        name='email'
+                        value={email}
+                        onChange={(e) => {setEmail(e.target.value)}}
+                        required={true}
+                        />
+
+                    </div>
+                    <div>
+                        <input type="file"
+                        name='image'
+                        onChange={updateFile}
+                        />
+                    </div>
+                        <button id='edit-profile-btn' type='submit'>Edit</button>
                 </form>
                 {imageLoading && (
                     <p>Loading...</p>
                 )}
             </div>
-        </>
+        </div>
     )
 }
 export default EditProfile;

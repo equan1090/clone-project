@@ -57,7 +57,34 @@ ol {
 .more-album {
      grid-area: more-album;
 }
+.edit-album {
+    cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    height: 173px;
+    width: 173px;
+    left: 21.3%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 
+}
+.edit-album:hover {
+    opacity: .75;
+    background-color: #2b2b2b;
+}
+.crud-btn {
+    position: absolute;
+    right: 1rem;
+    top: 30%
+}
+#delete-album-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+
+}
 
 
 /* .song-container {

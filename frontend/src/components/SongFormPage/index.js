@@ -58,12 +58,12 @@ function SongFormPage() {
         if(url) formData.append('url', url)
 
         setLoading(true)
-        const data = await dispatch(createSong({name, url, userId: sessionUser.id, albumId}))
-            .then(() => {
-                setName("");
-                setUrl(null)
-                setAlbumId(null)
-            })
+        await dispatch(createSong({name, url, userId: sessionUser.id, albumId}))
+            // .then(() => {
+            //     setName("");
+            //     setUrl(null)
+            //     setAlbumId(null)
+            // })
         history.push(`/albums/${albumId}/songs`)
         // const res = await csrfFetch(`/api/songs`, {
         //     method: "POST",
