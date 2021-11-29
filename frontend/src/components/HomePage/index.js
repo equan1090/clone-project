@@ -9,13 +9,16 @@ import Navigation from '../Navigation';
 function HomePage() {
     const dispatch = useDispatch();
     let newAlbums = [];
+    let discover = [];
+
     const albums = useSelector(state => state?.albums?.albums)
     const sessionUser = useSelector(state => state.session.user);
-    if(albums?.length >= 5){
-        newAlbums = albums?.slice(0, 6)
-    } else{
-        newAlbums = albums
-    }
+
+    // if(albums?.length >= 5){
+    //     newAlbums = albums?.slice(0, 6)
+    // } else{
+    //     discover = albums?.slice(6)
+    // }
     // const newAlbums = useSelector(state => state.albums.albums)
 
     useEffect(() => {
@@ -28,18 +31,22 @@ function HomePage() {
                 <Navigation />
                 <ProfileButton user={sessionUser} />
                 <h2 style={{color:'white'}}>
-                    New
+                    Albums
                 </h2>
                 <ul className='home-page-content'>
 
-                    {Array.isArray(newAlbums) && newAlbums?.map((album) => (
+                    {Array.isArray(albums) && albums?.map((album) => (
 
                             <AlbumCard album={album} userId={album.userId}/>
                         ))}
                  </ul>
-                <div className='discover'>
+                {/* <div className='discover'>
                     <h2 style={{color:'white'}}>Discover</h2>
-                </div>
+                         {Array.isArray(discover) && discover?.map((album) => (
+
+                        <AlbumCard album={album} userId={album.userId}/>
+                        ))}
+                </div> */}
 
             </div>
         </>
