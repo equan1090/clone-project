@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink} from 'react-router-dom';
+import { NavLink, Link} from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 
@@ -7,28 +7,29 @@ import './Navigation.css';
 
 
 
-function Navigation({props}){
+function Navigation(){
   const sessionUser = useSelector(state => state.session.user);
-  console.log('this is navigation props', props)
+
+
 
   let sessionLinks;
-  if (sessionUser) {
-    sessionLinks = (
-      <div>
-        <ProfileButton user={sessionUser} />
-      </div>
-    );
-  }
+  // if (sessionUser) {
+  //   sessionLinks = (
+  //     <div>
+  //       <ProfileButton user={sessionUser} />
+  //     </div>
+  //   );
+  // }
 
-  if (props === 'home'){
+  // if (props === 'home'){
     return (
-        <header className='top-nav-bar'>
+        <div className='top-nav-bar'>
 
             <li>
-              <NavLink exact to="/" id='home-btn' className="header__navMenuItem">Tune Cloud</NavLink>
+            <h1 id='home-btn'>Tune Cloud</h1>
             </li>
             <li>
-              <NavLink exact to='/' className="header__navMenuItem active">Home</NavLink>
+              <NavLink exact to='/home' className="header__navMenuItem ">Home</NavLink>
             </li>
             <li>
               <NavLink exact to='/albums/new' className='header__navMenuItem'>Create Album</NavLink>
@@ -36,54 +37,76 @@ function Navigation({props}){
             <li>
               <NavLink to="/songs/new" className="header__navMenuItem">Upload Song</NavLink>
             </li>
-          {sessionLinks}
-        </header>
+
+        </div>
     );
-  }
-  else if (props === 'createAlbum'){
-    return (
-        <header className='top-nav-bar'>
+  // }
+  // else if (props === 'createAlbum'){
+  //   return (
+  //       <header className='top-nav-bar'>
 
-            <li>
-              <NavLink exact to="/" id='home-btn' className="header__navMenuItem">Tune Cloud</NavLink>
-            </li>
-            <li>
-              <NavLink exact to='/' className="header__navMenuItem">Home</NavLink>
-            </li>
-            <li>
-              <NavLink exact to='/albums/new' className='header__navMenuItem active'>Create Album</NavLink>
-            </li>
-            <li>
-              <NavLink to="/songs/new" className="header__navMenuItem">Upload Song</NavLink>
-            </li>
-
-
-          {sessionLinks}
-        </header>
-    );
-  }
-  else {
-    return (
-        <header className='top-nav-bar'>
-
-            <li>
-              <NavLink exact to="/" id='home-btn' className="header__navMenuItem">Tune Cloud</NavLink>
-            </li>
-            <li>
-              <NavLink exact to='/' className="header__navMenuItem">Home</NavLink>
-            </li>
-            <li>
-              <NavLink exact to='/albums/new' className='header__navMenuItem'>Create Album</NavLink>
-            </li>
-            <li>
-              <NavLink to="/songs/new" className="header__navMenuItem active">Upload Song</NavLink>
-            </li>
+  //           <li>
+  //             <h1 id='home-btn'>Tune Cloud</h1>
+  //           </li>
+  //           <li>
+  //             <NavLink exact to='/home' className="header__navMenuItem">Home</NavLink>
+  //           </li>
+  //           <li>
+  //             <NavLink exact to='/albums/new' className='header__navMenuItem active'>Create Album</NavLink>
+  //           </li>
+  //           <li>
+  //             <NavLink to="/songs/new" className="header__navMenuItem">Upload Song</NavLink>
+  //           </li>
 
 
-          {sessionLinks}
-        </header>
-    );
-  }
+  //         {sessionLinks}
+  //       </header>
+  //   );
+  // }
+  // else if (props === 'uploadSong') {
+  //   return (
+  //       <header className='top-nav-bar'>
+
+  //           <li>
+  //           <h1 id='home-btn'>Tune Cloud</h1>
+  //           </li>
+  //           <li>
+  //             <NavLink exact to='/home' className="header__navMenuItem">Home</NavLink>
+  //           </li>
+  //           <li>
+  //             <NavLink exact to='/albums/new' className='header__navMenuItem'>Create Album</NavLink>
+  //           </li>
+  //           <li>
+  //             <NavLink to="/songs/new" className="header__navMenuItem active">Upload Song</NavLink>
+  //           </li>
+
+
+  //         {sessionLinks}
+  //       </header>
+  //   );
+  // }
+  // else{
+  //   return (
+  //     <header className='top-nav-bar'>
+
+  //       <li>
+  //       <h1 id='home-btn'>Tune Cloud</h1>
+  //       </li>
+  //       <li>
+  //         <NavLink exact to='/home' className="header__navMenuItem">Home</NavLink>
+  //       </li>
+  //       <li>
+  //         <NavLink exact to='/albums/new' className='header__navMenuItem'>Create Album</NavLink>
+  //       </li>
+  //       <li>
+  //         <NavLink to="/songs/new" className="header__navMenuItem">Upload Song</NavLink>
+  //       </li>
+
+
+  //     {sessionLinks}
+  //    </header>
+  //   )
+  // }
 
 }
 

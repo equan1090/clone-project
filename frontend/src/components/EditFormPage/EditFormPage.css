@@ -1,37 +1,35 @@
-.signup-wrapper {
-    width: 100vw;
+.album-edit-wrapper {
+    width: 80vw;
     height: 100vh;
+    position: absolute;
+    right: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.form-container {
-    margin: 0 auto;
-    background-color: white;
+
+.album-edit-container {
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #15172b;
+    width: 25%;
+    height: 50%;
 }
 
-.signup-form {
+.album-edit-form {
     display: flex;
     flex-direction: column;
     background-color: #15172b;
-
 }
-.signup-email, .signup-username, .signup-password, .signup-confirm{
-    display: block;
-    margin: 1rem;
-}
-
-.signup-btn{
-    text-align: center;
-
-}
-.signup-form input {
+.album-edit-form input {
     margin: .5rem 0;
     background-color: #303245;
     color: white
 }
 
-.signup-form button {
+.album-edit-form button {
     background-color: #08d;
     border-radius: 12px;
     border: 0;

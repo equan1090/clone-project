@@ -85,47 +85,63 @@ export const getUserAlbums = (id) => async(dispatch) => {
 
 export const updateAlbum = (album, id) => async(dispatch) => {
 
-    const response = await csrfFetch(`/api/albums/${id}`,{
-        method: "PUT",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(album)
-    })
+    const formData = new FormData()
+    const {title, imageUrl} = album;
+    formData.append('title', title)
+    formData.append('imageUrl', imageUrl)
+
+    let response;
+
+    if(typeof imageUrl === 'string'){
+        response = await csrfFetch(`/api/albums/${id}`, {
+            method: "PATCH",
+            body: JSON.stringify(album)
+        })
+    }else {
+        console.log('inside else statement of store')
+        response = await csrfFetch(`/api/albums/${id}`,{
+            method: "PATCH",
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+            body: formData
+        })
+
+    }
 
     if(response.ok){
         const updatedAlbum = await response.json();
-        dispatch(update(updatedAlbum))
+        dispatch(load(updatedAlbum))
+        return updatedAlbum
     }
 }
 
-// export const newSong = (songData) => async(dispatch) => {
-//     const response = await csrfFetch(`/api/album/`, {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(songData)
-//     })
-
-//     if(response.ok) {
-//         const song = await response.json();
-//         dispatch(addSong(song))
-//         return song;
-//     }
-// }
 
 export const createAlbum = (albumData) => async (dispatch) => {
+
+    const {userId, title, imageUrl} = albumData
+    const formData = new FormData()
+
+    formData.append('title', title)
+    formData.append('userId', userId)
+
+    if(imageUrl) formData.append('imageUrl', imageUrl)
+
     const response = await csrfFetch('/api/albums/new', {
         method: "POST",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(albumData)
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+        body: formData,
     })
 
     if(response.ok){
         const newAlbum = await response.json();
-        dispatch(addNewAlbum(newAlbum));
-        return newAlbum
+        return dispatch(addNewAlbum(newAlbum));
     }
 }
 
-const initialState = {albums:null}
+const initialState = []
 
 const albumReducer = (state = initialState, action) => {
 
@@ -135,8 +151,7 @@ const albumReducer = (state = initialState, action) => {
 
         case CREATE:
             return {
-                ...state,
-                [action.payload.id] : action.payload
+                album: action.payload
             }
 
         case LOAD:

@@ -26,6 +26,8 @@
 }
 #home-btn {
     font-size: 30px;
+    color: #dcdcdc8f;
+    margin-left: 1rem;
 }
 
 
@@ -64,24 +66,51 @@ a.header__navMenuItem, a.header__navMenuItem:visited {
 
 .profile-dropdown {
     position: absolute;
-    top: 46px;
-    right: 2rem;
+    top: 33px;
+    right: 0px;
     display: flex;
     flex-direction: column;
     list-style: none;
-    background-color: #999;
+    background-color: black;
     backdrop-filter: blur(0.2);
     border: 1px solid #212121;
-    color: black;
+    color: #dcdcdc8f;
     border-radius: 5px;
     justify-content: center;
     align-items: center;
     padding: 1rem;
     margin: 0;
 }
+.profile-dropdown a {
+    text-decoration: none;
+    color: #dcdcdc8f;
+}
+.profile-dropdown li {
+    margin: .25rem;
+    width: 100%
+}
+.profile-dropdown li:hover {
+    margin: .25rem;
+    background-color: #383838;
+}
+.profile-dropdown button {
+    background: none;
+    border: none;
+    color: #dcdcdc8f;
+    font-size: 16px;
+}
 
 .profile {
-    margin-right: 2rem;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background-color: black;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    width: 10%;
+    height: 1.5rem;
+    font-size: 16px;
 }
 
 #uploadBtn {
@@ -101,5 +130,4 @@ li a.header__navMenuItem:hover {
 
 a.active {
     background-color: #383838;
-
 }

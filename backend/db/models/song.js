@@ -14,6 +14,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
     },
     albumId: {
+      allowNull: true,
+      defaultValue: null,
       type: DataTypes.INTEGER
     }
   }, {});

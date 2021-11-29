@@ -1,15 +1,50 @@
-.form-container {
-    margin: 0 auto;
-    background-color: white;
+.album-form-wrapper {
+    position: absolute;
+    right: 0px;
+    display: flex;
+    width: 80vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+.create-album-container {
+    border-radius: 15px;
+    width: 25%;
+    margin: 0;
+    background-color: #15172b;
+    height: 50%;
+
 }
 
 .album-form {
-    max-width: 500px;
+    /* max-width: 500px; */
     margin: 2rem auto;
-    border: 2px solid black;
+
     padding: 2rem;
 
 }
 .album-title {
     display: block;
+}
+#create-album-form .input {
+    margin: .5rem 0;
+    width: 100%;
+}
+
+#create-album-btn {
+    background-color: #08d;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    font-size: 18px;
+    height: 2rem;
+    /* margin-top: 1rem; */
+    text-align: center;
+    width: 100%;
+}
+
+#note {
+    color: white;
 }

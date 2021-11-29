@@ -1,57 +1,101 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createAlbum } from '../../store/album';
+import { createAlbum, load } from '../../store/album';
 import './AlbumFormPage.css'
-
+import ProfileButton from '../Navigation/ProfileButton';
+import Navigation from '../Navigation';
 function AlbumFormPage() {
     //dispatch any action to the store
     const dispatch = useDispatch();
     const [title, setTitle] = useState('')
     const [image, setImage] = useState('')
+    const [errors, setErrors] = useState([])
+    const [loading, setLoading] = useState(false)
     const history = useHistory();
 
     //takes the current state as an argument and returns whatever data you want from it
     const sessionUser = useSelector(state => state.session.user);
 
-    if(!sessionUser) {
-        history.push('/login')
-    }
+    // if(!sessionUser) {
+    //     history.push('/login')
+    // }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        let errors = []
+        const acceptedTypes = ['png', 'jpeg', 'jpg']
+
+        let fileArr = image ? image.name.split('.') : null
+        let fileType = image ? fileArr[fileArr.length - 1]: null
+
+        if(!image) errors.push('Please provide an album image')
+        if(image && !acceptedTypes.includes(fileType)) errors.push('Image must be either a png or jpeg')
+        if(title.length > 30 || title.length < 4) errors.push('Title must be between 4-30 characters')
+
+        if(errors.length) {
+
+            setErrors(errors)
+            return null
+        }
+        setErrors('')
 
         const payload = {
             userId: sessionUser.id,
             title,
             imageUrl: image
         }
-
+        setLoading(true)
         await dispatch(createAlbum(payload))
+            .then(() => {
+                setTitle("")
+                setImage(null)
+            })
+        setLoading(false)
+        // await dispatch(createAlbum(payload))
 
-        history.push(`/users/${sessionUser.id}/albums`)
+        history.push(`/users/${sessionUser.id}`)
 
     }
+
+    const updateFile = (e) => {
+        const file = e.target.files[0]
+
+        if (file) setImage(file)
+    }
+
     return (
-        <div className='form-container'>
-            <div className='album-form'>
-                <form onSubmit={handleSubmit}>
-                    <input type="text"
-                        className="album-title"
-                        placeholder="Title"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        required
-                    />
-                    <input type="text"
-                        placeholder='Image Url'
-                        className="album-url"
-                        value={image}
-                        onChange={(e) => setImage(e.target.value)}
-                        required
-                    />
-                    <button type='submit'>Submit</button>
-                </form>
+        <div className='album-form-wrapper'>
+            <Navigation />
+            <ProfileButton user={sessionUser} />
+            <div className='create-album-container'>
+                <div className='album-form'>
+                    <form id='create-album-form' onSubmit={handleSubmit}>
+                        <input type="text"
+                            className="input"
+                            placeholder="Title"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            required
+                        />
+                        <input type="file"
+                        className='input'
+                            onChange={updateFile}
+                            required
+                        />
+                    </form>
+                    <button id='create-album-btn' type='submit'>Submit</button>
+                </div>
+                    <p id='note'>*Note* Must create an album before uploading songs</p>
+                    {errors && errors.map((error, ind) => (
+                            <div className='errors' key={ind}>
+                                {error}
+                            </div>
+                        ))}
+                    {loading && (
+                        <p>Loading...</p>
+                    )}
             </div>
         </div>
     )

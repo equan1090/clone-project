@@ -1,6 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { check, validationResult } = require('express-validator');
+const {singleMulterUpload, singlePublicFileUpload} = require('../../awsS3')
 
 const {Album, Song} = require("../../db/models")
 
@@ -41,15 +41,34 @@ router.get('/:albumId/songs', asyncHandler(async(req, res) => {
     res.json(songs)
 }))
 
-router.post('/new', asyncHandler(async(req,res) => {
-    const album = await Album.create(req.body);
-    res.json(album)
+router.post('/new', singleMulterUpload("imageUrl"), asyncHandler(async(req,res) => {
+    const {userId, title} = req.body
+
+    const imageUrl = await singlePublicFileUpload(req.file)
+
+    const album = await Album.create({
+        userId,
+        title,
+        imageUrl
+    })
+    return res.json({
+        album,
+    })
 }))
 
-router.put('/:albumId', asyncHandler(async(req,res) => {
+router.patch('/:albumId', singleMulterUpload('imageUrl'), asyncHandler(async(req,res) => {
     const {albumId} = req.params
-    const {title, imageUrl} = req.body
+    let {title, imageUrl} = req.body
     const album = await Album.findByPk(albumId)
+    console.log('inside patch request')
+
+
+    if(req.file) {
+        console.log('inside req.file')
+
+        imageUrl = await singlePublicFileUpload(req.file)
+        console.log('this is imageUrl in backend \n\n\n', imageUrl)
+    }
 
     if(album){
         await album.update({title, imageUrl})

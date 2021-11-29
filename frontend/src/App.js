@@ -18,6 +18,7 @@ import HomePage from "./components/HomePage";
 import SplashPage from "./components/SplashPage";
 import AudioBar from "./components/AudioPlayer";
 import ProtectedRoute from "./ProtectedRoute";
+import EditProfile from "./components/EditProfile";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -36,29 +37,21 @@ function App() {
             <SplashPage/>
           </Route>
           <ProtectedRoute exact path='/home'>
-            <Navigation props={location[0]}/>
-            <HomePage />
 
-            </ProtectedRoute>
-          <ProtectedRoute path="/users/:userId/albums">
-            <Navigation />
-            <AlbumPage />
+            <HomePage />
             <AudioBar />
-          </ProtectedRoute>
+            </ProtectedRoute>
           <ProtectedRoute exact path="/users/:userId">
-            <Navigation />
             <UserPage />
             <AudioBar />
           </ProtectedRoute>
-          <Route path="/login">
+          <ProtectedRoute exact path="/users/:userId/edit">
             <Navigation />
-            <LoginFormPage />
+            <EditProfile />
             <AudioBar />
-          </Route>
+          </ProtectedRoute>
           <Route path="/signup">
-            <Navigation />
             <SignupFormPage />
-            <AudioBar />
           </Route>
           <ProtectedRoute path='/albums/:albumId/edit'>
            <Navigation />
@@ -66,17 +59,14 @@ function App() {
             <AudioBar />
           </ProtectedRoute>
           <ProtectedRoute path="/albums/:albumId/songs">
-            <Navigation />
             <SpecificAlbum />
             <AudioBar />
           </ProtectedRoute>
           <ProtectedRoute path="/albums/new">
-            <Navigation props={location[1]}/>
             <AlbumFormPage />
             <AudioBar />
           </ProtectedRoute>
           <ProtectedRoute path="/songs/new">
-            <Navigation props={location[2]}/>
             <SongFormPage />
             <AudioBar />
           </ProtectedRoute>
@@ -85,13 +75,13 @@ function App() {
             <SongPage />
             <AudioBar />
           </ProtectedRoute>
-          <ProtectedRoute path='/users/:userId/songs'>
+          {/* <ProtectedRoute path='/users/:userId/songs'>
             <Navigation />
             <UserSongs />
             <AudioBar />
-          </ProtectedRoute>
+          </ProtectedRoute> */}
           <Route path='/'>Page not found</Route>
-          
+
         </Switch>
 
       )}

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
+import defaultImage from '../../images/default-profile.png'
 
 
 function SignupFormPage() {
@@ -13,6 +14,7 @@ function SignupFormPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [image] = useState(defaultImage)
   const [errors, setErrors] = useState([]);
 
 
@@ -21,9 +23,10 @@ function SignupFormPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password }))
+      return dispatch(sessionActions.signup({ email, username, password, image }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -33,6 +36,8 @@ function SignupFormPage() {
   };
 
   return (
+    <div className='signup-wrapper'>
+
     <div className='form-container'>
 
       <form onSubmit={handleSubmit}
@@ -74,10 +79,11 @@ function SignupFormPage() {
             required
             className='signup-email'
           />
-        <div className='signup-btn'>
+        
           <button type="submit" >Sign Up</button>
-        </div>
+
       </form>
+    </div>
     </div>
   );
 }

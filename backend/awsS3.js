@@ -14,9 +14,9 @@ const s3 = new AWS.S3({ apiVersion: "2006-03-01" });
 // --------------------------- Public UPLOAD ------------------------
 
 const singlePublicFileUpload = async (file) => {
-  console.log('\n\n\nLine 17\n\n\n')
   const { originalname, mimetype, buffer } = await file;
   const path = require("path");
+ 
   // name of the file in your S3 bucket will be the date in ms plus the extension name
   const Key = new Date().getTime().toString() + path.extname(originalname);
 
@@ -28,7 +28,7 @@ const singlePublicFileUpload = async (file) => {
   };
 
   const result = await s3.upload(uploadParams).promise();
-  console.log('\n\n\nLine 30\n\n\n')
+
   // save the name of the file in your bucket as the key in your database to retrieve for later
   return result.Location;
 };
@@ -44,7 +44,9 @@ const multiplePublicFileUpload = async (files) => {
 // --------------------------- Prviate UPLOAD ------------------------
 
 const singlePrivateFileUpload = async (file) => {
+
   const { originalname, mimetype, buffer } = await file;
+
   const path = require("path");
   // name of the file in your S3 bucket will be the date in ms plus the extension name
   const Key = new Date().getTime().toString() + path.extname(originalname);

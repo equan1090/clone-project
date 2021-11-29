@@ -1,6 +1,11 @@
 .form-container {
     margin: 0 auto;
     background-color: white;
+    width: 50%;
+}
+
+.login-area {
+    max-width: 90%;
 }
 
 .login-form {
@@ -16,5 +21,5 @@
 
 .login-btn {
     text-align: center;
-    
+
 }

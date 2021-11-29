@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import LoginFormPage from "../LoginFormPage";
 import githublogo from '../../images/github-logo.png'
 import linkedinlogo from '../../images/linkedin.png'
-
 import SignupFormPage from "../SignupFormPage";
+import sound from '../../images/sound.jpg'
 import './SplashPage.css'
 function SplashPage() {
 
@@ -15,7 +15,9 @@ function SplashPage() {
                     <h3>Tune Cloud</h3>
                     <h1>Music for everyone, anytime</h1>
                 </div>
-                <div className="splash-img"></div>
+                <div className="splash-img">
+                    <img src={sound} alt="" />
+                </div>
                 <div className="footer">
                     <a target="_blank" href="https://github.com/equan1090" rel="noreferrer">
                         <img id='github' src={githublogo} alt="" />

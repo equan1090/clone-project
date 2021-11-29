@@ -9,7 +9,7 @@ function UserSongs() {
     const songs = useSelector(state => state.songs.songs)
 
     useEffect(() => {
-        console.log('*********************************')
+        
         dispatch(getUserSongs(params.userId))
     }, [dispatch, params])
 

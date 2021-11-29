@@ -34,7 +34,7 @@ router.post('/:songId/comments', asyncHandler(async(req, res) => {
 }))
 
 router.post('/', singleMulterUpload("url"), asyncHandler(async (req, res) => {
-    console.log('in post route')
+
     const {userId, name, albumId} = req.body;
     const url = await singlePublicFileUpload(req.file);
     const newSong = await Song.create({
