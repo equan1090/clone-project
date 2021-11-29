@@ -1,13 +1,19 @@
+.signup-wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .form-container {
     margin: 0 auto;
     background-color: white;
 }
 
 .signup-form {
-    max-width: 500px;
-    margin: 2rem auto;
-    border: 2px solid black;
-    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #15172b;
 
 }
 .signup-email, .signup-username, .signup-password, .signup-confirm{
@@ -18,4 +24,23 @@
 .signup-btn{
     text-align: center;
 
+}
+.signup-form input {
+    margin: .5rem 0;
+    background-color: #303245;
+    color: white
+}
+
+.signup-form button {
+    background-color: #08d;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    font-size: 18px;
+    height: 2rem;
+    margin-top: 1rem;
+    text-align: center;
+    width: 100%;
 }

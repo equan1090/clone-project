@@ -1,6 +1,6 @@
 .splash-container {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: .5fr 0.9fr;
     grid-template-rows: 0.9fr 1.5fr 0.6fr;
     gap: 25px 50px;
     grid-auto-flow: row;
@@ -8,6 +8,7 @@
       "splash-text login-signup-area"
       "splash-img login-signup-area"
       "footer footer";
+    
   }
 
   .splash-text {
@@ -21,7 +22,7 @@
       grid-area: footer;
       display: flex;
       justify-content: space-evenly;
-      align-self: flex-end;
+      align-self: flex-start;
     }
 
 .login-signup-area {
@@ -33,6 +34,13 @@
     margin-top: 20%;
 
  }
+.splash-img img {
+    position: absolute;
+    top: 25%;
+    margin-left: 2rem;
+    width: 50vw;
+    height: 300px;
+}
 
 #linkedin {
     height: 64px;

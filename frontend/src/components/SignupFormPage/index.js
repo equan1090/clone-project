@@ -36,8 +36,8 @@ function SignupFormPage() {
   };
 
   return (
-    <>
-    
+    <div className='signup-wrapper'>
+
     <div className='form-container'>
 
       <form onSubmit={handleSubmit}
@@ -79,12 +79,12 @@ function SignupFormPage() {
             required
             className='signup-email'
           />
-        <div className='signup-btn'>
+        
           <button type="submit" >Sign Up</button>
-        </div>
+
       </form>
     </div>
-    </>
+    </div>
   );
 }
 
