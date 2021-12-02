@@ -8,8 +8,7 @@ function AlbumCard(props) {
     const album = props.album
     const userId = props.userId
     const user = useSelector(state => state.users.user)
-    console.log('album', album)
-    console.log('this is user,', user)
+
 
     // useEffect(() => {
     //     dispatch(getUser(userId))

@@ -21,7 +21,7 @@ function EditProfile() {
 
     const updateFile = (e) => {
         const file = e.target.files[0]
-        console.log('this is profile image', file)
+
         if (file) setImage(file);
     }
     const handleSubmit = async(e) => {
@@ -42,7 +42,7 @@ function EditProfile() {
 
         if(errors.length) {
             setErrors(errors)
-            console.log(errors)
+
             return null
         }
 
@@ -55,7 +55,7 @@ function EditProfile() {
             image,
         }
 
-        console.log('payload front end', image)
+     
         setImageLoading(true)
         await dispatch(editUser(payload))
         setImageLoading(false)

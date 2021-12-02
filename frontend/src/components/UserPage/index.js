@@ -36,7 +36,7 @@ function UserPage() {
         dispatch(getUser(id.userId))
         dispatch(getUserAlbums(params.userId))
     }, [dispatch, params])
-    console.log('these are the user albums', albums)
+    
 
     return(
         <div class="profile-wrapper">

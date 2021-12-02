@@ -15,7 +15,7 @@ export const load = (user) => ({
 })
 
 export const editUser = (user) => async(dispatch) => {
-    console.log('this is user in store', user)
+
     const formData = new FormData()
     const {userId, username, email, image} = user;
     formData.append('userId', userId)
@@ -39,7 +39,7 @@ export const editUser = (user) => async(dispatch) => {
         })
 
     }
-    console.log('got a response\n\n\n')
+
 
     if(response.ok) {
         const edittedUser = await response.json();

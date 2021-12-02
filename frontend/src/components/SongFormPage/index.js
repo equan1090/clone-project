@@ -60,27 +60,9 @@ function SongFormPage() {
 
         setLoading(true)
         await dispatch(createSong({name, url, userId: sessionUser.id, albumId}))
-            // .then(() => {
-            //     setName("");
-            //     setUrl(null)
-            //     setAlbumId(null)
-            // })
+
         history.push(`/albums/${albumId}/songs`)
-        // const res = await csrfFetch(`/api/songs`, {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "multipart/form-data",
-        //     },
-        //     body: formData,
-        // })
-        // if(res.ok){
-        //     const data = await res.json()
-        //     console.log('This is data\n\n\n', data)
-        //     setLoading(false)
-        //     history.push(`/songs/${data?.newSong?.id}`)
-        // }
-        // console.log('this is the song i just uploaded', data)
-        // history.push('/songs/')
+
     }
 
     const updateFile = (e) => {

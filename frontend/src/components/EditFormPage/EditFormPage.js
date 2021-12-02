@@ -37,7 +37,7 @@ function EditFormPage(){
 
         if(errors.length) {
             setErrors(errors)
-            console.log(errors)
+
             return null
         }
 
@@ -55,7 +55,7 @@ function EditFormPage(){
     }
     const updateFile = (e) => {
         const file = e.target.files[0]
-        console.log('this is fule in update file', file)
+        
         if (file) setImageUrl(file);
     }
 

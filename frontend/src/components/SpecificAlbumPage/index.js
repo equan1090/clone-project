@@ -39,8 +39,7 @@ function SpecificAlbum() {
     // }
 
     const AlbumOwner = () => {
-        console.log('this is sessionUserId', sessionUser?.id)
-        console.log('this is albumuserID', album?.userId)
+
         if(sessionUser?.id === album?.userId){
             return (
                 <>
@@ -102,59 +101,10 @@ function SpecificAlbum() {
 
             </div>
         </div>
-            // <div className='song-container'>
-            //     <div className='album-profile-header'>
-            //         <img id='album-image' src={album?.imageUrl} alt="" />
-            //         <div className='album-info'>
-            //             <h1 id='album-title'>{album?.title}</h1>
-            //         </div>
-            //     </div>
 
-            //     <div className='song-list'>
-            //         <p>Hello</p>
-            //     </div>
-
-
-            // { <ul className='song-list'>
-            //     {Array.isArray(songs) && songs?.map((song) => (
-            //         <div className='album-song-container' key={song.id}>
-            //             <Link to={`/songs/${song.id}`}>
-            //                 <img src={album.imageUrl} alt="" />
-            //                 <li>{song.name}</li>
-            //             </Link>
-            //         </div>
-            //     ))}
-            //  </ul>}
-
-
-
-        // </div>
         )
 
-        // else{
-        //     return(
-        //         <div className='song-container'>
-        //             <div className='profile-header'>
-        //                 <img src="https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/1631/posts/35798/image/SoundcloudBanner20.jpg"
-        //                     alt="" className='profile-header'/>
-        //             </div>
-        //                 <h1 className='album-header-title'>{album.title}</h1>
 
-        //             <ul className='song-list'>
-        //                 {Array.isArray(songs) && songs?.map((song) => (
-        //                     <div className='album-song-container' key={song.id}>
-        //                         <Link to={`/songs/${song.id}`}>
-        //                             <img src={album.imageUrl} alt="" />
-
-        //                             <li>{song.name}</li>
-        //                         </Link>
-        //                     </div>
-        //                 ))}
-        //              </ul>
-
-        //         </div>
-        //     )
-        // }
 
 
 

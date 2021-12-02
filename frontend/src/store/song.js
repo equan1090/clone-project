@@ -84,18 +84,7 @@ export const createSong = (songData) => async (dispatch) => {
     // }
 }
 
-// export const deleteSong = (id) => async(dispatch) => {
 
-//     const response = await csrfFetch(`/api/songs/${id}`, {
-//         method:'DELETE',
-//     })
-//     if(response.ok) {
-//         console.log('inside res.ok for delete song')
-//         const song = await response.json();
-//         dispatch(load(song))
-//     }
-
-// }
 
 export const getSpecificSong = (id) => async(dispatch) => {
     const response = await csrfFetch(`/api/songs/${id}`)

@@ -98,7 +98,7 @@ export const updateAlbum = (album, id) => async(dispatch) => {
             body: JSON.stringify(album)
         })
     }else {
-        console.log('inside else statement of store')
+        
         response = await csrfFetch(`/api/albums/${id}`,{
             method: "PATCH",
             headers: {
