@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import {getUser} from '../../store/user'
 import { editUser } from "../../store/user";
+import ScaleLoader from 'react-spinners/ScaleLoader'
 import './EditProfile.css'
 function EditProfile() {
     const dispatch = useDispatch()
@@ -55,7 +56,7 @@ function EditProfile() {
             image,
         }
 
-     
+
         setImageLoading(true)
         await dispatch(editUser(payload))
         setImageLoading(false)
@@ -98,9 +99,13 @@ function EditProfile() {
                     </div>
                         <button id='edit-profile-btn' type='submit'>Edit</button>
                 </form>
-                {imageLoading && (
-                    <p>Loading...</p>
-                )}
+                    <div className='loading-screen'>
+                        {imageLoading && (
+                            <ScaleLoader
+                            color={"#F37A24"}
+                            size={150} />
+                            )}
+                    </div>
             </div>
         </div>
     )
