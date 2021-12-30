@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getUser } from '../../store/user'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -9,10 +9,14 @@ function AlbumCard(props) {
     const userId = props.userId
     const user = useSelector(state => state.users.user)
 
+    // console.log('album onwer', albumOwner)
+    // debugger
+    console.log('these are my props', props)
+    useEffect(() => {
+        dispatch(getUser(userId))
 
-    // useEffect(() => {
-    //     dispatch(getUser(userId))
-    // }, [dispatch])
+        // if(!albumOwner) setAlbumOwner(user?.username)
+    }, [dispatch, userId])
 
 
     return (
@@ -20,14 +24,14 @@ function AlbumCard(props) {
             <div className='album-card'>
                 <Link className='card-link' to={`/albums/${album?.id}/songs`}>
                     <div className='album-card-img'>
-                        <img src={album.imageUrl} alt="" />
+                        <img src={album?.imageUrl} alt="" />
                     </div>
                     <div className='album-card-title'>
-                        <strong id='album-card-name'>{album.title}</strong>
+                        <strong id='album-card-name'>{album?.title}</strong>
                     </div>
                 </Link>
                 <div className='album-card-owner'>
-                    <Link id="album-card-link" to={`/users/${album.userId}`}>More from Creator</Link>
+                    <Link id="album-card-link" to={`/users/${album?.userId}`}>More from Creator</Link>
                 </div>
             </div>
         </>

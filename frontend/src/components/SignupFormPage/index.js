@@ -43,7 +43,7 @@ function SignupFormPage() {
       <form onSubmit={handleSubmit}
       className='signup-form'>
         <ul>
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          {errors.map((error, idx) => <li className='errors' key={idx}>{error}</li>)}
         </ul>
           <input
             type="text"
@@ -79,7 +79,7 @@ function SignupFormPage() {
             required
             className='signup-email'
           />
-        
+
           <button type="submit" >Sign Up</button>
 
       </form>
