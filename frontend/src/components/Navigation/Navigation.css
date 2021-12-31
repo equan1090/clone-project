@@ -131,3 +131,16 @@ li a.header__navMenuItem:hover {
 a.active {
     background-color: #383838;
 }
+
+.social-links {
+    border-top: 1px solid #383838;
+}
+
+.social-links li {
+    margin: 1em 0;
+}
+
+.nav-social {
+    width: 36px;
+    height: 36px;
+}
