@@ -9,7 +9,7 @@ function UserSongs() {
     const songs = useSelector(state => state.songs.songs)
 
     useEffect(() => {
-        
+
         dispatch(getUserSongs(params.userId))
     }, [dispatch, params])
 
@@ -20,9 +20,7 @@ function UserSongs() {
             <div className='profile-header'>
             <img src="https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/1631/posts/35798/image/SoundcloudBanner20.jpg"
                     alt="" className='profile-header'/>
-                {/* <div className='edit-image'>
-                    Hello
-                </div> */}
+
 
             </div>
             <div className='profile-page-nav'>

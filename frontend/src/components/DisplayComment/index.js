@@ -10,7 +10,7 @@ function DisplayComment () {
 
     useEffect(() => {
         dispatch(songComment(id.songId))
-        // dispatch(getUser(1))
+       
     }, [dispatch, id])
 
     return(

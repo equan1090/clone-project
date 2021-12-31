@@ -9,13 +9,12 @@ function AlbumCard(props) {
     const userId = props.userId
     const user = useSelector(state => state.users.user)
 
-    // console.log('album onwer', albumOwner)
-    // debugger
+
     console.log('these are my props', props)
     useEffect(() => {
         dispatch(getUser(userId))
 
-        // if(!albumOwner) setAlbumOwner(user?.username)
+
     }, [dispatch, userId])
 
 

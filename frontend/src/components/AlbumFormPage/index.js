@@ -18,9 +18,7 @@ function AlbumFormPage() {
     //takes the current state as an argument and returns whatever data you want from it
     const sessionUser = useSelector(state => state.session.user);
 
-    // if(!sessionUser) {
-    //     history.push('/login')
-    // }
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -54,7 +52,7 @@ function AlbumFormPage() {
                 setImage(null)
             })
         setLoading(false)
-        // await dispatch(createAlbum(payload))
+
 
         history.push(`/users/${sessionUser.id}`)
 

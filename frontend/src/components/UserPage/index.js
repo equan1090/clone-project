@@ -36,7 +36,7 @@ function UserPage() {
         dispatch(getUser(id.userId))
         dispatch(getUserAlbums(params.userId))
     }, [dispatch, params])
-    
+
 
     return(
         <div class="profile-wrapper">
@@ -64,28 +64,7 @@ function UserPage() {
                 </div>
             </div>
         </div>
-        // <div className="content-container">
-        //     <div className='profile-header'>
-        //         <div className='profile-picture-container'>
-        //             <img id='profile-picture' src={user?.image} alt="" />
-        //         </div>
-        //         <Edit />
-        //         <div className='profile-info'>
-        //             <h1 id='profile-username'>{user?.username}</h1>
-        //         </div>
-        //     </div>
-        //     <div className='profile-page-nav'>
-        //         <ul className='profile-page-tabs'>
-        //             <li>
-        //                 <Link to={`/users/${id.userId}/albums`}>Albums</Link>
-        //             </li>
-        //             <li>
-        //                 <Link to={`/users/${id.userId}/songs`}>Tracks</Link>
-        //             </li>
 
-        //         </ul>
-        //     </div>
-        // </div>
     )
 }
 

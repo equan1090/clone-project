@@ -34,9 +34,7 @@ function SpecificAlbum() {
         history.push(`/users/${sessionUser.id}`)
 
     }
-    // const handleDeleteSong = (songId) => {
-    //     dispatch(deleteSong(songId))
-    // }
+
 
     const AlbumOwner = () => {
 
@@ -86,13 +84,7 @@ function SpecificAlbum() {
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{song.name}
                                 </div>
                             </div>
-                            {/* <div className='song-edit'>
-                                <button className='delete-song'
-                                    onClick={handleDeleteSong(song.id)}
-                                >
-                                    <img id='delete-img' src={deleteIcon} alt="" />
-                                </button>
-                            </div> */}
+
                         </div>
                     ))}
                 </ol>

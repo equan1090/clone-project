@@ -14,12 +14,6 @@ function HomePage() {
     const albums = useSelector(state => state?.albums?.albums)
     const sessionUser = useSelector(state => state.session.user);
 
-    // if(albums?.length >= 5){
-    //     newAlbums = albums?.slice(0, 6)
-    // } else{
-    //     discover = albums?.slice(6)
-    // }
-    // const newAlbums = useSelector(state => state.albums.albums)
 
     useEffect(() => {
         dispatch(getAlbum())
@@ -36,17 +30,10 @@ function HomePage() {
                 <ul className='home-page-content'>
 
                     {Array.isArray(albums) && albums?.map((album) => (
-
                             <AlbumCard album={album} userId={album.userId}/>
                         ))}
                  </ul>
-                {/* <div className='discover'>
-                    <h2 style={{color:'white'}}>Discover</h2>
-                         {Array.isArray(discover) && discover?.map((album) => (
 
-                        <AlbumCard album={album} userId={album.userId}/>
-                        ))}
-                </div> */}
 
             </div>
         </>
