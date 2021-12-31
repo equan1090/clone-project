@@ -60,7 +60,7 @@ router.delete(
       const { user } = req;
 
       if (user) {
-        console.log('user in backend',user)
+        
         return res.json({
           user: user.toSafeObject()
         });
