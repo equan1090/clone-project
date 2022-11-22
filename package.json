@@ -1,7 +1,7 @@
 {
   "name": "tune-cloud",
   "version": "1.0.0",
-  "description": "",
+  "description": "Tune Coud is a sound cloud clone made to showcase my progression in learning Javascript, React, and Redux.",
   "main": "index.js",
   "scripts": {
     "heroku-postbuild": "npm run build --prefix frontend",
@@ -22,5 +22,20 @@
   "bugs": {
     "url": "https://github.com/equan1090/clone-project/issues"
   },
-  "homepage": "https://github.com/equan1090/clone-project#readme"
+  "homepage": "https://github.com/equan1090/clone-project#readme",
+  "dependencies": {
+    "csstype": "^3.0.10",
+    "hoist-non-react-statics": "^3.3.2",
+    "js-tokens": "^4.0.0",
+    "loose-envify": "^1.4.0",
+    "object-assign": "^4.1.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-is": "^16.13.1",
+    "react-spinners": "^0.11.0",
+    "regenerator-runtime": "^0.13.9",
+    "scheduler": "^0.20.2",
+    "stylis": "^4.0.10"
+  },
+  "devDependencies": {}
 }
