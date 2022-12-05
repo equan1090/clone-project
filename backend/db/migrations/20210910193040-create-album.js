@@ -32,9 +32,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    }, options);
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Albums');
+    return queryInterface.dropTable('Albums', options);
   }
 };

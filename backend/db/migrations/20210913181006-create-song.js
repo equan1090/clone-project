@@ -38,9 +38,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    }, options);
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Songs');
+    return queryInterface.dropTable('Songs', options);
   }
 };
